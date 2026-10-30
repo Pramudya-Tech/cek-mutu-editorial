@@ -1,0 +1,464 @@
+{
+ "id": "editor-emp-g3",
+ "role": "Editor",
+ "var": "emp",
+ "varName": "Empiris & Technical Paper",
+ "gate": 3,
+ "title": "Post-Acceptance Editorial Check (Copyediting)",
+ "sub": "Language and Copyediting Quality Control",
+ "stage": "Tahap OJS: <em>Copyediting</em> → <em>Production</em>   |   Penanggung jawab: Penyunting Naskah (<em>Copyeditor</em>) / Penyunting Bahasa (<em>Language Editor</em>); persoalan substansi dieskalasi kepada editor",
+ "intro": [],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah (Manuscript ID)",
+   "html": "ID naskah (<em>Manuscript ID</em>)",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Nama editor/pemeriksa",
+   "html": "Nama editor/pemeriksa",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Tanggal pemeriksaan",
+   "html": "Tanggal pemeriksaan",
+   "wide": false,
+   "type": "date",
+   "ph": ""
+  },
+  {
+   "label": "Gaya sitasi (citation style)",
+   "html": "Gaya sitasi (<em>citation style</em>)",
+   "wide": false,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "APA 7",
+     "other": false
+    },
+    {
+     "t": "IEEE",
+     "other": false
+    },
+    {
+     "t": "Lainnya sesuai kebijakan",
+     "other": true
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Bahasa naskah",
+   "html": "Bahasa naskah",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Versi naskah diterima (nama berkas/tanggal)",
+   "html": "Versi naskah diterima (nama berkas/tanggal)",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel 3A. Indikator Inti (berlaku untuk semua jenis artikel)",
+   "notes": [],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "A. Persiapan Penyuntingan",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-01",
+       "k": true,
+       "title": "Berkas yang disunting merupakan versi naskah yang diterima",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nama berkas dan tanggal identik dengan versi yang dicatat pada Gate 2 (G2-20)."
+       ]
+      },
+      {
+       "code": "G3-02",
+       "k": false,
+       "title": "Lembar gaya (<em>style sheet</em>) naskah ditetapkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Lembar gaya yang memuat bahasa, ejaan, gaya sitasi, penulisan angka, singkatan, dan istilah tersedia sebelum penyuntingan serta diterapkan secara konsisten."
+       ]
+      }
+     ],
+     "plain": "A. Persiapan Penyuntingan",
+     "mod": null
+    },
+    {
+     "title": "B. Halaman Judul dan Identitas Penulis",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-17",
+       "k": false,
+       "title": "Identitas penulis, afiliasi, ucapan terima kasih, dan pendanaan konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Identik dengan data pada Gate 1 (G1-04 dan G1-18), atau perubahannya telah disetujui editor."
+       ]
+      }
+     ],
+     "plain": "B. Halaman Judul dan Identitas Penulis",
+     "mod": null
+    },
+    {
+     "title": "C. Judul, Abstrak, dan Kata Kunci",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-20",
+       "k": false,
+       "title": "Judul, abstrak, dan kata kunci sesuai dengan ketentuan jurnal setelah penyuntingan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Panjang abstrak maksimal 250 kata; kapitalisasi judul mengikuti gaya jurnal; jumlah, urutan alfabetis, dan format kata kunci memenuhi ketentuan jurnal. Isi abstrak tetap konsisten dengan tujuan, metode, temuan, dan simpulan dalam naskah versi akhir."
+       ]
+      }
+     ],
+     "plain": "C. Judul, Abstrak, dan Kata Kunci",
+     "mod": null
+    },
+    {
+     "title": "D. Batang Tubuh (Pendahuluan sampai dengan Simpulan)",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-03",
+       "k": false,
+       "title": "Organisasi gagasan tidak menghambat pemahaman",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat bagian yang salah tempat atau berulang. Perubahan struktur hanya diusulkan melalui kueri."
+       ]
+      },
+      {
+       "code": "G3-04",
+       "k": false,
+       "title": "Setiap paragraf memiliki satu fokus yang dikembangkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Gagasan pokok dapat diidentifikasi dan didukung oleh kalimat lain dalam paragraf."
+       ]
+      },
+      {
+       "code": "G3-05",
+       "k": false,
+       "title": "Koherensi dan kohesi antarkalimat serta antarparagraf terjaga",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Transisi antargagasan logis; rujukan pronomina dan kata penghubung tidak ambigu."
+       ]
+      },
+      {
+       "code": "G3-06",
+       "k": false,
+       "title": "Kalimat gramatikal, jelas, dan tidak ambigu",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kesalahan tata bahasa dikoreksi; ambiguitas diselesaikan atau ditanyakan melalui kueri."
+       ]
+      },
+      {
+       "code": "G3-25",
+       "k": false,
+       "title": "Tidak terdapat redundansi atau repetisi yang menghambat pemahaman",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pengulangan gagasan, frasa kosong, dan pewatas yang tidak perlu dihapus tanpa mengubah makna."
+       ]
+      },
+      {
+       "code": "G3-07",
+       "k": false,
+       "title": "Kosakata akademik dan terminologi ilmiah konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Satu konsep diwakili oleh satu istilah; singkatan didefinisikan pada kemunculan pertama."
+       ]
+      },
+      {
+       "code": "G3-28",
+       "k": false,
+       "title": "Ragam bahasa akademik konsisten dengan karakter jurnal dan disiplin",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sudut pandang, nada, dan register konsisten di seluruh naskah dan sesuai dengan gaya jurnal."
+       ]
+      },
+      {
+       "code": "G3-08",
+       "k": false,
+       "title": "Ejaan, tanda baca, kapitalisasi, singkatan, dan penulisan angka sesuai dengan kaidah",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sesuai dengan lembar gaya; naskah berbahasa Indonesia mengikuti EYD Edisi V dan KBBI VI, termasuk penulisan miring untuk istilah asing."
+       ]
+      },
+      {
+       "code": "G3-09",
+       "k": false,
+       "title": "Bahasa bebas bias dan inklusif",
+       "b": "diatur dalam kebijakan jurnal",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Istilah yang berpotensi merendahkan ditandai dan diganti dengan persetujuan penulis."
+       ]
+      },
+      {
+       "code": "G3-26",
+       "k": false,
+       "title": "Klaim yang memerlukan rujukan disertai sitasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Paragraf argumentatif yang memuat klaim faktual atau teoretis memiliki sitasi; klaim kuat (“terbukti”, angka, tren) memiliki sitasi spesifik; kalimat penutup atau jembatan tanpa sitasi tidak memuat klaim faktual baru. Lokasi yang memerlukan sitasi ditandai melalui kueri."
+       ]
+      },
+      {
+       "code": "G3-18",
+       "k": true,
+       "title": "Makna ilmiah tidak berubah akibat penyuntingan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat perubahan data, temuan, metode, atau argumen tanpa persetujuan penulis dan editor."
+       ]
+      }
+     ],
+     "plain": "D. Batang Tubuh (Pendahuluan sampai dengan Simpulan)",
+     "mod": null
+    },
+    {
+     "title": "E. Tabel, Gambar, Rumus, dan Satuan",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-10",
+       "k": false,
+       "title": "Judul bagian (<em>heading</em>), tabel, gambar, keterangan (<em>caption</em>), dan rujukan silang konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Penomoran berurutan; setiap tabel dan gambar dirujuk dalam teks; keterangan sesuai dengan isi."
+       ]
+      },
+      {
+       "code": "G3-27",
+       "k": false,
+       "title": "Keterangan tabel dan gambar dapat dipahami secara mandiri",
+       "b": "naskah memuat tabel atau gambar",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Keterangan beserta catatannya menyebut objek, sampel atau cakupan, satuan, dan pesan utama. Panjang dan letak rincian mengikuti gaya jurnal (pada APA, rincian diletakkan di catatan tabel)."
+       ]
+      },
+      {
+       "code": "G3-11",
+       "k": true,
+       "title": "Angka dalam teks konsisten dengan tabel dan gambar",
+       "b": "naskah memuat data numerik",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat selisih angka; jumlah total benar; perbedaan ditanyakan kepada penulis dan tidak dikoreksi secara sepihak."
+       ]
+      },
+      {
+       "code": "G3-21",
+       "k": false,
+       "title": "Format tabel dan gambar sesuai dengan ketentuan jurnal",
+       "b": "naskah memuat tabel atau gambar",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Judul, catatan, sumber, satuan, dan singkatan pada tabel ditulis sesuai dengan templat; tabel memiliki catatan untuk singkatan, satuan, signifikansi, dan sumber; gambar memiliki legenda, label sumbu bersatuan, dan resolusi minimum jurnal."
+       ]
+      },
+      {
+       "code": "G3-22",
+       "k": false,
+       "title": "Rumus, simbol, dan satuan konsisten",
+       "b": "naskah memuat rumus, simbol, atau satuan ukur",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Simbol, variabel, dan satuan ditulis seragam dalam teks, tabel, dan rumus; penomoran persamaan berurutan."
+       ]
+      },
+      {
+       "code": "G3-16",
+       "k": true,
+       "title": "Izin penggunaan materi pihak ketiga tersedia",
+       "b": "terdapat gambar, tabel, atau kutipan dari sumber berhak cipta",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Izin tertulis atau lisensi terbuka tercatat; atribusi dicantumkan pada keterangan."
+       ]
+      }
+     ],
+     "plain": "E. Tabel, Gambar, Rumus, dan Satuan",
+     "mod": null
+    },
+    {
+     "title": "F. Pernyataan Akhir Naskah",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-23",
+       "k": false,
+       "title": "Pernyataan akhir naskah lengkap dan konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pernyataan etik, konflik kepentingan, pendanaan, ketersediaan data, penggunaan AI, dan kontribusi penulis tersedia dan isinya sama dengan yang disetujui pada Gate 1 dan Gate 2."
+       ]
+      }
+     ],
+     "plain": "F. Pernyataan Akhir Naskah",
+     "mod": null
+    },
+    {
+     "title": "G. Sitasi dan Daftar Referensi",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-12",
+       "k": false,
+       "title": "Sitasi dalam teks sesuai dengan gaya jurnal (APA 7 atau IEEE)",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Semua sitasi mengikuti ketentuan gaya yang dicentang pada bagian identitas formulir."
+       ]
+      },
+      {
+       "code": "G3-13",
+       "k": false,
+       "title": "Daftar referensi diformat sesuai dengan gaya jurnal",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "APA: diurutkan secara alfabetis dengan unsur dan tanda baca yang sesuai. IEEE: diurutkan menurut nomor kemunculan dengan unsur yang sesuai."
+       ]
+      },
+      {
+       "code": "G3-14",
+       "k": true,
+       "title": "Sitasi dan daftar referensi saling bersesuaian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap sitasi terdapat dalam daftar referensi; entri yang tidak disitasi dihapus, kecuali jenis artikel mengizinkan bibliografi; nama dan tahun (APA) atau nomor (IEEE) sesuai."
+       ]
+      },
+      {
+       "code": "G3-15",
+       "k": true,
+       "title": "Metadata bibliografis, DOI, dan URL terverifikasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "DOI dan URL mengarah ke karya yang sama; status penarikan (<em>retraction</em>) referensi kunci diperiksa; data yang tidak dapat diverifikasi dicatat dan tidak dilengkapi dengan dugaan. Ketiadaan DOI tidak otomatis merupakan kesalahan."
+       ]
+      }
+     ],
+     "plain": "G. Sitasi dan Daftar Referensi",
+     "mod": null
+    },
+    {
+     "title": "H. Lampiran dan Materi Pendukung",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-24",
+       "k": false,
+       "title": "Lampiran dan materi pendukung konsisten dengan naskah",
+       "b": "terdapat lampiran atau materi pendukung (<em>supplementary material</em>)",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Lampiran dirujuk dalam teks, label dan penomorannya konsisten, serta tidak memuat data pribadi partisipan yang tidak semestinya dipublikasikan."
+       ]
+      }
+     ],
+     "plain": "H. Lampiran dan Materi Pendukung",
+     "mod": null
+    },
+    {
+     "title": "I. Penyelesaian Penyuntingan",
+     "module": false,
+     "items": [
+      {
+       "code": "G3-19",
+       "k": true,
+       "title": "Semua kueri telah ditutup dan persetujuan penulis terdokumentasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak ada kueri yang masih terbuka; persetujuan penulis tercatat secara tertulis melalui surel atau diskusi OJS."
+       ]
+      },
+      {
+       "code": "G3-20",
+       "k": true,
+       "title": "Laporan kemiripan naskah yang telah diterima telah diperiksa kembali",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Laporan kemiripan (similarity report) terbaru tersedia dan berasal dari pemeriksaan naskah yang telah diterima serta selesai disunting. Indeks kemiripan maksimal 20%, dan sumber kecocokan telah ditelaah secara kontekstual untuk memastikan ketepatan atribusi. Seluruh temuan yang memerlukan perbaikan telah diselesaikan, serta hasil pemeriksaan terdokumentasi sebelum naskah diteruskan ke tahap produksi."
+       ]
+      }
+     ],
+     "plain": "I. Penyelesaian Penyuntingan",
+     "mod": null
+    }
+   ]
+  }
+ ],
+ "signRole": "Editor",
+ "short": "Sunting",
+ "version": "2.3"
+}

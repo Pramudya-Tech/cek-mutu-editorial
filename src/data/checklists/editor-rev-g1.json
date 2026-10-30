@@ -1,0 +1,536 @@
+{
+ "id": "editor-rev-g1",
+ "role": "Editor",
+ "var": "rev",
+ "varName": "Review, Survey & Konseptual",
+ "gate": 1,
+ "title": "Penyaringan Awal Naskah (Preliminary Screening)",
+ "sub": "Submission and Preliminary Screening",
+ "stage": "Tahap OJS: <em>Submission</em> → <em>Review</em>   |   Penanggung jawab: Editor / Editor Bagian (<em>Section Editor</em>) / Editor Penanggung Jawab Naskah (<em>Handling Editor</em>)",
+ "intro": [],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah (Manuscript ID)",
+   "html": "ID naskah (<em>Manuscript ID</em>)",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Nama editor/pemeriksa",
+   "html": "Nama editor/pemeriksa",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Tanggal pemeriksaan",
+   "html": "Tanggal pemeriksaan",
+   "wide": false,
+   "type": "date",
+   "ph": ""
+  },
+  {
+   "label": "Gaya sitasi (citation style)",
+   "html": "Gaya sitasi (<em>citation style</em>)",
+   "wide": true,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "APA 7",
+     "other": false
+    },
+    {
+     "t": "IEEE",
+     "other": false
+    },
+    {
+     "t": "Lainnya sesuai kebijakan",
+     "other": true
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Versi berkas yang diperiksa",
+   "html": "Versi berkas yang diperiksa",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jenis artikel dan modul",
+   "html": "Jenis artikel dan modul",
+   "wide": true,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "Kajian sistematis",
+     "other": false
+    },
+    {
+     "t": "SLR/mapping",
+     "other": false
+    },
+    {
+     "t": "Scoping (SC)",
+     "other": false
+    },
+    {
+     "t": "Bibliometrik (BIB)",
+     "other": false
+    },
+    {
+     "t": "Meta-analisis (MA)",
+     "other": false
+    },
+    {
+     "t": "Kajian naratif/survey paper (NR)",
+     "other": false
+    },
+    {
+     "t": "Konseptual/teoretis (K)",
+     "other": false
+    }
+   ],
+   "multi": true
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel 1A. Indikator Inti (berlaku untuk semua jenis artikel)",
+   "notes": [],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "A. Seluruh Naskah: Kesesuaian dan Kelengkapan Pengajuan",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-01",
+       "k": true,
+       "title": "Topik naskah sesuai dengan fokus dan ruang lingkup (<em>Focus and Scope</em>) jurnal",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Topik dan objek kajian dapat dipetakan ke sekurang-kurangnya satu bidang dalam ruang lingkup jurnal; tuliskan bidang tersebut pada kolom temuan."
+       ]
+      },
+      {
+       "code": "G1-02",
+       "k": true,
+       "title": "Jenis artikel sesuai dengan kategori jurnal dan rubrik (<em>section</em>) OJS",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jenis artikel tercantum dalam daftar jenis artikel yang diterima jurnal, dan rubrik OJS yang dipilih sudah tepat."
+       ]
+      },
+      {
+       "code": "G1-03",
+       "k": true,
+       "title": "Kelengkapan, kesesuaian format, dan keterbacaan berkas wajib",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Seluruh berkas wajib menurut Pedoman Penulis (<em>Author Guidelines</em>), termasuk naskah artikel dalam format Microsoft Word serta data pendukung kajian yang diwajibkan jurnal (misalnya daftar studi yang disertakan, string pencarian lengkap, atau tabel ekstraksi), telah diunggah, dapat dibuka tanpa galat, serta tidak memiliki versi ganda yang menimbulkan ketidakjelasan. Seluruh lampiran yang dirujuk dalam naskah juga tersedia dan dapat dibuka."
+       ]
+      },
+      {
+       "code": "G1-20",
+       "k": false,
+       "title": "Panjang naskah serta jumlah tabel, gambar, dan referensi sesuai dengan ketentuan jurnal",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah kata naskah tidak melebihi <strong>10.000 kata untuk artikel tinjauan (<em>review paper</em>)</strong>. Jumlah tabel, gambar, dan referensi memenuhi ketentuan Pedoman Penulis (<em>Author Guidelines</em>) untuk jenis artikel yang diajukan."
+       ]
+      },
+      {
+       "code": "G1-08",
+       "k": false,
+       "title": "Struktur naskah sesuai dengan templat dan jenis artikel",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Semua bagian wajib menurut templat untuk kajian pustaka atau artikel konseptual tersedia. Kajian sistematis memuat bagian metode kajian; kajian naratif, <em>survey paper</em>, dan artikel konseptual boleh tersusun tematik. Struktur IMRaD tidak dituntut kecuali diwajibkan templat. Penomoran baris menggunakan pengaturan <em>Continuous</em> dari awal hingga akhir naskah, tanpa dimulai ulang pada setiap halaman atau bagian."
+       ]
+      }
+     ],
+     "plain": "A. Seluruh Naskah: Kesesuaian dan Kelengkapan Pengajuan",
+     "mod": null
+    },
+    {
+     "title": "B. Halaman Judul dan Identitas Penulis",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-04",
+       "k": false,
+       "title": "Identitas dan metadata penulis konsisten antara OJS dan naskah atau halaman judul",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nama, urutan, afiliasi (departemen, institusi, dan negara), surel penulis korespondensi, dan ORCID (apabila diwajibkan) identik; setiap perubahan penulis disertai penjelasan."
+       ]
+      },
+      {
+       "code": "G1-05",
+       "k": false,
+       "title": "Naskah untuk penelaahan bebas dari identitas penulis untuk memastikan <em>double-blind review</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat nama, afiliasi, ucapan terima kasih, sitasi diri yang membuka identitas, ataupun metadata/properti berkas, termasuk informasi <em>Author</em> dan <em>Last saved by</em> yang dapat mengidentifikasi penulis. <strong>Cara menghapus metadata penulis di Microsoft Word (Windows):</strong> Gunakan salinan naskah untuk penelaahan. Pilih <strong>File &gt; Info &gt; Check for Issues &gt; Inspect Document</strong>. Pastikan opsi <strong>Document Properties and Personal Information dicentang</strong>, kemudian klik <strong>Inspect</strong>. Pada hasil pemeriksaan bagian tersebut, klik <strong>Remove All</strong>, lalu <strong>Reinspect</strong> untuk memastikan informasi identitas telah dihapus. Klik <strong>Close</strong> dan simpan berkas sebelum diunggah."
+       ]
+      }
+     ],
+     "plain": "B. Halaman Judul dan Identitas Penulis",
+     "mod": null
+    },
+    {
+     "title": "C. Judul, Abstrak, dan Kata Kunci",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-06",
+       "k": false,
+       "title": "Judul mencerminkan isi naskah dan memenuhi ketentuan jurnal",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Fokus, variabel, atau populasi yang disebut dalam judul merupakan fokus naskah; ketentuan singkatan dipenuhi. Judul terdiri atas maksimal 18 kata dan diutamakan tidak melebihi dua baris pada templat jurnal."
+       ]
+      },
+      {
+       "code": "G1-07",
+       "k": false,
+       "title": "Abstrak dan kata kunci lengkap sesuai dengan jenis artikel",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kajian pustaka atau <em>survey paper</em> memuat fokus, sumber dan prosedur seleksi, hasil sintesis, dan implikasi; kajian sistematis juga menyebut basis data, rentang tahun, pedoman, dan jumlah studi akhir. Artikel konseptual memuat fokus, tesis atau argumen utama, dan implikasi. Panjang abstrak minimal 200 kata dan maksimal 250 kata. Tersedia minimal lima kata kunci yang relevan dengan isi naskah dan disusun secara alfabetis."
+       ]
+      }
+     ],
+     "plain": "C. Judul, Abstrak, dan Kata Kunci",
+     "mod": null
+    },
+    {
+     "title": "D. Pendahuluan",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-24",
+       "k": false,
+       "title": "Pendahuluan menyajikan fenomena global dan nasional, <em>state of the art</em>, serta kesenjangan kajian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pendahuluan diawali dengan fenomena atau permasalahan global dan nasional yang relevan dengan fokus kajian, didukung data atau referensi yang sesuai. <em>State of the art</em> disajikan melalui sintesis penelitian dan kajian pustaka terdahulu yang menunjukkan perkembangan pengetahuan dan pendekatan yang telah digunakan. Kesenjangan dinyatakan secara eksplisit berdasarkan keterbatasan, inkonsistensi temuan, atau aspek yang belum terjawab dalam literatur tersebut, termasuk alasan diperlukannya kajian ini."
+       ]
+      },
+      {
+       "code": "G1-09",
+       "k": false,
+       "title": "Tujuan, pertanyaan penelitian, atau fokus kajian dinyatakan secara eksplisit",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Terdapat pertanyaan kajian, fokus, atau tesis yang dapat dikutip; pada kajian sistematis, pertanyaan kajian dirumuskan secara eksplisit (misalnya dengan kerangka PICO atau PCC)."
+       ]
+      },
+      {
+       "code": "G1-11",
+       "k": false,
+       "title": "Relevansi, orisinalitas, dan potensi kontribusi kajian dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Naskah menyatakan pentingnya kajian, aspek kebaruan yang membedakannya dari kajian pustaka atau <em>survey paper</em> terdahulu, serta kontribusi yang ditawarkan terhadap pengetahuan, metode, atau praktik. Pada tahap <em>preliminary</em>, pemeriksaan berfokus pada keberadaan dan kejelasan pernyataan tersebut."
+       ]
+      }
+     ],
+     "plain": "D. Pendahuluan",
+     "mod": null
+    },
+    {
+     "title": "E. Metode Kajian Pustaka atau Pendekatan Argumentasi",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-10",
+       "k": true,
+       "title": "Metode kajian pustaka atau pendekatan argumentasi dapat diidentifikasi untuk dinilai oleh <em>reviewer</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kajian sistematis, <em>scoping review</em>, bibliometrik, dan meta-analisis menyebutkan sumber, string pencarian, dan prosedur seleksi, serta menyertakan gambar prosedur kajian berupa diagram alur yang menunjukkan urutan tahapan pelaksanaan dan konsisten dengan uraian metode. Kajian naratif dan <em>survey paper</em> menyebutkan dasar pemilihan literatur. Artikel konseptual menyebutkan kerangka dan sumber argumen. Komponen metode sebaiknya disajikan dalam subbagian terpisah agar sistematis dan mudah ditelaah."
+       ]
+      }
+     ],
+     "plain": "E. Metode Kajian Pustaka atau Pendekatan Argumentasi",
+     "mod": null
+    },
+    {
+     "title": "F. Hasil Sintesis, Tabel, dan Gambar",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-21",
+       "k": false,
+       "title": "Tabel dan gambar terbaca, bernomor, dan dirujuk dalam teks",
+       "b": "naskah memuat tabel atau gambar",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap tabel dan gambar dapat dibaca dengan jelas, diberi nomor secara berurutan, dan dirujuk dalam teks. Tabel disajikan dalam format yang dapat diedit, bukan berupa gambar. Gambar memiliki resolusi minimal 300 dpi pada ukuran penempatan dalam naskah serta tidak buram atau pecah. Seluruh tabel dan gambar yang dirujuk tersedia dalam berkas naskah."
+       ]
+      },
+      {
+       "code": "G1-22",
+       "k": true,
+       "title": "Tidak terdapat indikasi awal pengubahan gambar atau data dari studi sumber",
+       "b": "naskah mereproduksi gambar atau data dari studi lain",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Gambar yang direproduksi dari studi lain diberi atribusi; tidak tampak perubahan yang mengubah makna data asli. Temuan dicatat dan naskah ditahan untuk klarifikasi."
+       ]
+      }
+     ],
+     "plain": "F. Hasil Sintesis, Tabel, dan Gambar",
+     "mod": null
+    },
+    {
+     "title": "G. Kebahasaan Seluruh Naskah",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-12",
+       "k": false,
+       "title": "Kebahasaan naskah memungkinkan penelaahan oleh <em>reviewer</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pada dua sampai tiga halaman sampel, makna kalimat dapat dipahami tanpa menebak."
+       ]
+      }
+     ],
+     "plain": "G. Kebahasaan Seluruh Naskah",
+     "mod": null
+    },
+    {
+     "title": "H. Pernyataan Wajib dan Registrasi Protokol",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-18",
+       "k": false,
+       "title": "Pernyataan wajib menurut kebijakan jurnal lengkap",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Centang pernyataan yang diwajibkan jurnal, lalu periksa keberadaannya: ☐ konflik kepentingan (<em>Conflict of Interest</em>)  ☐ pendanaan (<em>Funding</em>)  ☐ penggunaan AI (<em>AI Disclosure Statement</em> yang menjelaskan jenis AI yang digunakan serta tujuan penggunaan secara detail)  ☐ ketersediaan data (<em>Data Availability</em>)  ☐ kontribusi penulis (<em>Author Contribution</em> sesuai dengan <a href=\"https://www.elsevier.com/researcher/author/policies-and-guidelines/credit-author-statement\" target=\"_blank\" rel=\"noopener\">CRediT</a>)."
+       ]
+      },
+      {
+       "code": "G1-19",
+       "k": true,
+       "title": "Registrasi protokol kajian dilaporkan",
+       "b": "kajian sistematis, <em>scoping review</em>, atau meta-analisis yang protokolnya didaftarkan atau diwajibkan jurnal",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nama registri (misalnya PROSPERO atau OSF) dan nomor registrasi dapat diakses serta sesuai dengan kajian yang dilaporkan."
+       ]
+      }
+     ],
+     "plain": "H. Pernyataan Wajib dan Registrasi Protokol",
+     "mod": null
+    },
+    {
+     "title": "I. Daftar Referensi",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-13",
+       "k": false,
+       "title": "Sistem sitasi sesuai dengan gaya jurnal dan daftar referensi tersedia",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Naskah menggunakan sistem sitasi sesuai dengan gaya yang ditetapkan jurnal, yaitu pengarang–tahun (<em>author–date</em>) untuk APA atau numerik [n] untuk IEEE. Kedua sistem tidak dicampur, dan daftar referensi tersedia serta disusun sesuai dengan gaya yang digunakan. Penulis disarankan menggunakan perangkat lunak pengelola referensi, seperti Mendeley atau Zotero, untuk menjaga konsistensi sitasi dan daftar referensi."
+       ]
+      },
+      {
+       "code": "G1-14",
+       "k": true,
+       "title": "Referensi kunci dapat ditelusuri",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap referensi memiliki DOI aktif atau pengenal/tautan permanen lain yang dapat diakses dan mengarah pada sumber yang sesuai. Sekurang-kurangnya lima referensi penopang klaim utama diverifikasi berdasarkan kesesuaian nama penulis, judul, dan tahun publikasi. Apabila satu referensi tidak dapat ditemukan atau identitasnya tidak sesuai, pemeriksaan diperluas ke seluruh daftar referensi."
+       ]
+      },
+      {
+       "code": "G1-23",
+       "k": false,
+       "title": "Pola sitasi tidak menunjukkan indikasi manipulasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sitasi diri (<em>self-citation</em>) dibatasi hingga maksimal 5 artikel berbeda yang ditulis oleh satu atau lebih penulis naskah, dan seluruhnya relevan dengan pembahasan. Batas tersebut dihitung berdasarkan jumlah artikel, bukan frekuensi kemunculan sitasi dalam teks. Jumlah dan proporsi sitasi diri serta sitasi ke jurnal tujuan dicatat. Konsentrasi sitasi pada penulis atau jurnal tertentu tanpa alasan ilmiah yang jelas ditandai untuk ditelaah lebih lanjut oleh editor dan tidak menjadi dasar penolakan otomatis."
+       ]
+      },
+      {
+       "code": "G1-25",
+       "k": false,
+       "title": "Jumlah referensi sesuai dengan standar jurnal",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah referensi memenuhi batas minimum yang ditetapkan dalam kebijakan editorial, yaitu minimal 40 referensi untuk jurnal SINTA 2, 30 referensi untuk jurnal SINTA 3, dan 20 referensi untuk jurnal SINTA 4. Minimal 90% dari seluruh referensi berupa artikel jurnal ilmiah atau makalah prosiding ilmiah. Sisanya dapat berupa buku akademik, standar, laporan penelitian, atau dokumen resmi yang relevan dan dapat ditelusuri. Blog, situs populer, dan sumber web nonilmiah tidak digunakan sebagai referensi."
+       ]
+      }
+     ],
+     "plain": "I. Daftar Referensi",
+     "mod": null
+    },
+    {
+     "title": "J. Integritas Publikasi (Seluruh Naskah)",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-15",
+       "k": true,
+       "title": "Kemiripan teks ditelaah secara kontekstual",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Indeks kemiripan teks pada saat pengajuan naskah maksimal 25%. Pemeriksaan mendokumentasikan nama perangkat, tanggal pemeriksaan, pengaturan filter, sumber kecocokan, serta bagian naskah yang menunjukkan kemiripan. Hasil pemeriksaan ditelaah secara kontekstual dengan memperhatikan ketepatan atribusi, penggunaan kutipan, dan sifat materi yang serupa. Tidak ditemukan penggunaan teks, gagasan, atau data substantif dari sumber lain tanpa atribusi yang memadai."
+       ]
+      },
+      {
+       "code": "G1-16",
+       "k": true,
+       "title": "Tidak terdapat publikasi ganda dan publikasi terkait telah diungkapkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Penulis menyatakan bahwa naskah belum diterbitkan sebagai artikel jurnal dan tidak sedang diajukan ke jurnal lain. Keterkaitan atau tumpang tindih dengan <em>preprint</em>, tesis, prosiding, atau artikel lain telah diungkapkan secara transparan. Pemeriksaan awal sekurang-kurangnya dilakukan dengan menyalin dan menempelkan judul lengkap naskah ke Google untuk menelusuri publikasi yang sama atau serupa. Hasil yang relevan diperiksa lebih lanjut dengan membandingkan isi dan status publikasinya untuk mengidentifikasi kemungkinan publikasi ganda."
+       ]
+      }
+     ],
+     "plain": "J. Integritas Publikasi (Seluruh Naskah)",
+     "mod": null
+    }
+   ]
+  },
+  {
+   "title": "Tabel 1B. Modul Saringan Jenis Artikel (kerjakan modul yang sesuai)",
+   "notes": [
+    "dan isi hanya butir checklist yang sesuai dengan metode penelitian atau jenis review yang dinilai."
+   ],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "Modul S-R. Saringan Kajian Pustaka (<em>Review</em>)",
+     "module": true,
+     "items": [
+      {
+       "code": "S-R01",
+       "k": true,
+       "title": "Jenis kajian pustaka dinyatakan konsisten pada judul, abstrak, dan metode",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jenis kajian (<em>systematic</em>, <em>scoping</em>, <em>bibliometric</em>, <em>meta-analysis</em>, <em>mapping</em>, <em>narrative</em>) sama di ketiga bagian dan sesuai dengan metode yang dipakai."
+       ]
+      },
+      {
+       "code": "S-R02",
+       "k": true,
+       "title": "Basis data dan <em>string</em> pencarian dilaporkan",
+       "b": "kajian sistematis, <em>scoping</em>, bibliometrik, atau meta-analisis",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Basis data yang ditelusuri dan <em>string</em> pencarian lengkap tersedia di naskah atau lampiran."
+       ]
+      },
+      {
+       "code": "S-R03",
+       "k": true,
+       "title": "Tanggal pencarian dan rentang tahun dilaporkan",
+       "b": "kajian sistematis, <em>scoping</em>, bibliometrik, atau meta-analisis",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tanggal pelaksanaan pencarian dan rentang tahun publikasi yang dicakup disebutkan."
+       ]
+      },
+      {
+       "code": "S-R04",
+       "k": true,
+       "title": "Kriteria inklusi dan eksklusi dinyatakan eksplisit",
+       "b": "kajian sistematis, <em>scoping</em>, bibliometrik, atau meta-analisis",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kriteria bahasa, jenis dokumen, periode, populasi, dan desain studi disebutkan."
+       ]
+      },
+      {
+       "code": "S-R05",
+       "k": true,
+       "title": "Alur seleksi dengan jumlah record pada setiap tahap tersedia",
+       "b": "kajian sistematis, <em>scoping</em>, atau meta-analisis",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Terdapat diagram atau uraian jumlah record yang diidentifikasi, duplikat, disaring, dikeluarkan beserta alasannya, dan studi akhir."
+       ]
+      },
+      {
+       "code": "S-R06",
+       "k": true,
+       "title": "Dasar pemilihan literatur dinyatakan pada kajian naratif",
+       "b": "kajian naratif atau survei",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Naskah menyatakan diri sebagai <em>narrative</em> atau <em>survey review</em> dan menjelaskan dasar pemilihan literatur, periode, serta sumbernya."
+       ]
+      }
+     ],
+     "plain": "Modul S-R. Saringan Kajian Pustaka (Review)",
+     "mod": "S-R"
+    }
+   ]
+  }
+ ],
+ "signRole": "Editor",
+ "short": "Saring awal",
+ "version": "2.3"
+}

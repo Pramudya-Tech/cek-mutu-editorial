@@ -1,0 +1,873 @@
+{
+ "id": "reviewer-rev",
+ "role": "Reviewer",
+ "var": "rev",
+ "varName": "Review, Survey & Konseptual",
+ "gate": null,
+ "title": "Checklist Reviewer",
+ "sub": null,
+ "stage": null,
+ "intro": [
+  "Isi kolom Temuan, Bukti, Lokasi, dan Tindak Lanjut secara singkat; komentar lengkap ditulis pada Report R1. Identitas reviewer tidak ditulis pada lembar ini apabila lembar akan diteruskan kepada penulis."
+ ],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah",
+   "html": "ID naskah",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jenis artikel/modul",
+   "html": "Jenis artikel/modul",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Putaran telaah",
+   "html": "Putaran telaah",
+   "wide": false,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "1",
+     "other": false
+    },
+    {
+     "t": "2",
+     "other": false
+    },
+    {
+     "t": "3",
+     "other": false
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Kode reviewer",
+   "html": "Kode <em>reviewer</em>",
+   "wide": false,
+   "type": "text",
+   "ph": "(diisi editor, misalnya R1)"
+  },
+  {
+   "label": "Tanggal telaah",
+   "html": "Tanggal telaah",
+   "wide": false,
+   "type": "date",
+   "ph": ""
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel TR-A. Aspek Inti",
+   "notes": [],
+   "cols": [
+    "No.",
+    "Aspek yang Dinilai",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut (saran)"
+   ],
+   "groups": [
+    {
+     "title": "A. Judul dan Abstrak",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-01",
+       "k": true,
+       "title": "Judul dan abstrak menggambarkan isi naskah secara akurat",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah judul dan abstrak konsisten dengan tujuan, desain, temuan, dan simpulan; apakah label desain sama dengan yang dilaporkan pada metode?"
+       ]
+      }
+     ],
+     "plain": "A. Judul dan Abstrak",
+     "mod": null
+    },
+    {
+     "title": "B. Pendahuluan dan Kajian Pustaka",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-02",
+       "k": true,
+       "title": "Masalah, tujuan, dan pertanyaan kajian dirumuskan konsisten dengan rasionalnya",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah masalah atau celah didukung oleh literatur, dan apakah tujuan atau pertanyaan kajian menjawab masalah tersebut?"
+       ]
+      },
+      {
+       "code": "TR-03",
+       "k": true,
+       "title": "Kajian pustaka relevan, mutakhir menurut bidangnya, dan mendukung klaim",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah literatur kunci dirujuk dan klaim yang memerlukan rujukan didukung sumber yang tepat? Sebutkan literatur penting yang belum dirujuk beserta alasannya."
+       ]
+      },
+      {
+       "code": "TR-04",
+       "k": true,
+       "title": "Kontribusi atau kebaruan dinyatakan dan didukung",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah kebaruan dibandingkan secara eksplisit dengan kajian atau <em>survey paper</em> terdahulu pada topik yang sama?"
+       ]
+      },
+      {
+       "code": "TR-05",
+       "k": true,
+       "title": "Kerangka konseptual atau taksonomi dipakai secara konsisten",
+       "b": "naskah menggunakan kerangka teori, kerangka konseptual, atau taksonomi",
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah kerangka atau taksonomi dipakai sebagai kategori sintesis dan muncul kembali dalam pembahasan?"
+       ]
+      }
+     ],
+     "plain": "B. Pendahuluan dan Kajian Pustaka",
+     "mod": null
+    },
+    {
+     "title": "C. Metode Kajian Pustaka atau Pendekatan Argumentasi",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-06",
+       "k": true,
+       "title": "Jenis kajian atau pendekatan argumentasi sesuai dengan pertanyaan kajian",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah jenis kajian (sistematis, <em>scoping</em>, bibliometrik, meta-analisis, naratif atau <em>survey paper</em>, atau konseptual) tepat untuk pertanyaan, dan labelnya sesuai dengan prosedur yang dipakai?"
+       ]
+      },
+      {
+       "code": "TR-07",
+       "k": true,
+       "title": "Sumber literatur, penelusuran, dan seleksi dilaporkan secara transparan",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah basis data, <em>string</em>, tanggal, dan kriteria seleksi dapat direproduksi? Pada kajian naratif atau <em>survey paper</em>, apakah dasar pemilihan literatur dijelaskan dan cakupannya memadai?"
+       ]
+      },
+      {
+       "code": "TR-08",
+       "k": true,
+       "title": "Ekstraksi dan sintesis dilaporkan dan sesuai dengan jenis kajian",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah sintesis menghubungkan studi (bukan ringkasan satu studi per paragraf), dan metode sintesis atau analisis bibliometrik atau statistik tepat?"
+       ]
+      },
+      {
+       "code": "TR-09",
+       "k": true,
+       "title": "Kualitas studi yang disintesis atau ketelitian argumentasi ditunjukkan",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah kualitas atau risiko bias studi dinilai dan memengaruhi sintesis? Pada artikel konseptual, apakah keberatan atau pandangan tandingan ditangani?"
+       ]
+      }
+     ],
+     "plain": "C. Metode Kajian Pustaka atau Pendekatan Argumentasi",
+     "mod": null
+    },
+    {
+     "title": "D. Hasil Sintesis atau Argumen",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-11",
+       "k": true,
+       "title": "Hasil sintesis dapat ditelusuri ke studi sumber",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah jumlah studi konsisten antarbagian, setiap klaim sintesis menyebut studi pendukungnya, dan tabel karakteristik atau peta lengkap?"
+       ]
+      }
+     ],
+     "plain": "D. Hasil Sintesis atau Argumen",
+     "mod": null
+    },
+    {
+     "title": "E. Pembahasan dan Simpulan",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-12",
+       "k": true,
+       "title": "Pembahasan menafsirkan hasil sintesis dan membandingkannya dengan kajian terdahulu",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah hasil dibandingkan dengan kajian atau <em>survey paper</em> terdahulu, pola hasil dijelaskan (misalnya heterogenitas atau bias publikasi), dan agenda riset diturunkan dari celah yang ditemukan?"
+       ]
+      },
+      {
+       "code": "TR-13",
+       "k": true,
+       "title": "Keterbatasan metode kajian diakui",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah keterbatasan basis data, bahasa, rentang tahun, dan kriteria seleksi dibahas beserta dampaknya terhadap simpulan?"
+       ]
+      },
+      {
+       "code": "TR-14",
+       "k": true,
+       "title": "Simpulan sepadan dengan bukti",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah simpulan sepadan dengan jumlah dan kualitas studi, dan klaim efektivitas hanya ditarik apabila studi sumber mendukung?"
+       ]
+      }
+     ],
+     "plain": "E. Pembahasan dan Simpulan",
+     "mod": null
+    },
+    {
+     "title": "F. Pelaporan dan Penyajian",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-15",
+       "k": false,
+       "title": "Pelaporan memenuhi pedoman yang sesuai dan pernyataan ketersediaan data",
+       "b": "jurnal mewajibkan pedoman pelaporan atau pernyataan ketersediaan data",
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah pedoman pelaporan yang sesuai (misalnya PRISMA 2020 atau PRISMA-ScR) dipenuhi, dan apakah daftar studi atau data ekstraksi dapat diakses?"
+       ]
+      },
+      {
+       "code": "TR-16",
+       "k": false,
+       "title": "Penyajian cukup jelas untuk dinilai secara ilmiah",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Komentari bahasa hanya apabila menghambat pemahaman ilmiah. Penyuntingan tata bahasa, ejaan, dan format sitasi dilakukan pada Gate 3."
+       ]
+      }
+     ],
+     "plain": "F. Pelaporan dan Penyajian",
+     "mod": null
+    },
+    {
+     "title": "G. Integritas Penelitian",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-17",
+       "k": true,
+       "title": "Tidak terdapat dugaan masalah integritas",
+       "b": null,
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Laporkan secara rahasia kepada editor apabila menemukan dugaan plagiarisme, fabrikasi atau manipulasi data atau gambar, publikasi ganda, atau sitasi manipulatif. Jangan menyelidiki sendiri atau menghubungi penulis."
+       ]
+      }
+     ],
+     "plain": "G. Integritas Penelitian",
+     "mod": null
+    },
+    {
+     "title": "H. Putaran Revisi",
+     "module": false,
+     "items": [
+      {
+       "code": "TR-18",
+       "k": true,
+       "title": "Tanggapan penulis dan perubahan naskah memadai",
+       "b": "naskah merupakan revisi (putaran kedua atau berikutnya)",
+       "lab": "Pertanyaan pemandu",
+       "cr": [
+        "Apakah setiap komentar Anda dijawab, dan apakah perubahan benar-benar terdapat pada lokasi yang disebut penulis?"
+       ]
+      }
+     ],
+     "plain": "H. Putaran Revisi",
+     "mod": null
+    }
+   ]
+  },
+  {
+   "title": "Tabel TR-B. Modul Desain Penelitian",
+   "notes": [
+    "Isi hanya modul yang sesuai dengan jenis artikel (lihat Panduan Reviewer butir 3). Butir pada modul yang tidak dipakai tidak perlu diisi."
+   ],
+   "cols": [
+    "No.",
+    "Aspek yang Dinilai",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut (saran)"
+   ],
+   "groups": [
+    {
+     "title": "Modul R. Kajian Pustaka Sistematis (semua subtipe sistematis)",
+     "module": true,
+     "items": [
+      {
+       "code": "RV-01",
+       "k": true,
+       "title": "Pedoman pelaporan kajian disebut dan diikuti",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Misalnya PRISMA 2020, PRISMA-ScR, JBI, Arksey dan O’Malley, Kitchenham, MOOSE, atau ENTREQ sesuai subtipe."
+       ]
+      },
+      {
+       "code": "RV-02",
+       "k": false,
+       "title": "Protokol terdaftar atau alasan tidak mendaftar dinyatakan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Nomor registrasi (PROSPERO, OSF) dicantumkan, atau alasannya dijelaskan."
+       ]
+      },
+      {
+       "code": "RV-03",
+       "k": true,
+       "title": "Pertanyaan kajian dirumuskan dengan kerangka yang sesuai",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Misalnya PICO, PCC, atau SPIDER, selaras dengan tujuan."
+       ]
+      },
+      {
+       "code": "RV-04",
+       "k": true,
+       "title": "Sumber pencarian beserta alasan pemilihannya dilaporkan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Basis data yang relevan dengan cakupan bidang dan alasannya; bawaan sekurang-kurangnya dua basis data dapat disesuaikan dengan kebijakan jurnal."
+       ]
+      },
+      {
+       "code": "RV-05",
+       "k": true,
+       "title": "<em>String</em> pencarian dapat direproduksi",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Kata kunci, operator, kolom, dan filter disajikan lengkap di tabel atau lampiran."
+       ]
+      },
+      {
+       "code": "RV-06",
+       "k": true,
+       "title": "Prosedur penyaringan dijelaskan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Tahap judul/abstrak dan teks lengkap, jumlah penyaring, penyelesaian perbedaan, dan kesepakatan (misalnya kappa) dilaporkan."
+       ]
+      },
+      {
+       "code": "RV-07",
+       "k": true,
+       "title": "Prosedur ekstraksi atau pengodean data dijelaskan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Formulir, uji coba, pelaksana, dan variabel yang diekstraksi disebutkan."
+       ]
+      },
+      {
+       "code": "RV-08",
+       "k": true,
+       "title": "Penilaian kualitas atau risiko bias menggunakan alat bernama",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Misalnya JBI, CASP, MMAT, RoB 2, ROBINS-I, atau Newcastle–Ottawa; ketiadaannya pada <em>scoping review</em> dinyatakan."
+       ]
+      },
+      {
+       "code": "RV-09",
+       "k": true,
+       "title": "Metode sintesis dijelaskan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Tematik, naratif, tabulasi, meta-analisis, atau bibliometrik, termasuk cara menangani studi dengan desain berbeda."
+       ]
+      },
+      {
+       "code": "RV-10",
+       "k": false,
+       "title": "Penelusuran tambahan, deduplikasi, dan alat bantu dilaporkan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "<em>Snowballing</em>, literatur kelabu, deduplikasi beserta jumlahnya, serta alat bantu (Rayyan, Covidence, VOSviewer, AI) beserta versi dan perannya."
+       ]
+      },
+      {
+       "code": "RV-11",
+       "k": true,
+       "title": "Diagram alur seleksi lengkap",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Jumlah identifikasi, duplikat, penyaringan, eksklusi beralasan, dan studi akhir; alasan eksklusi teks lengkap disebut beserta jumlahnya."
+       ]
+      },
+      {
+       "code": "RV-12",
+       "k": true,
+       "title": "Jumlah studi akhir konsisten",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Jumlah sama di abstrak, diagram, tabel karakteristik, dan teks."
+       ]
+      },
+      {
+       "code": "RV-13",
+       "k": true,
+       "title": "Tabel karakteristik studi memuat semua studi yang disintesis",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Penulis, tahun, negara, desain, sampel, dan temuan utama tersaji dengan kolom yang sama untuk semua studi."
+       ]
+      },
+      {
+       "code": "RV-14",
+       "k": true,
+       "title": "Hasil penilaian kualitas disajikan per studi dan memengaruhi sintesis",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Hasil per studi ditampilkan dan dipakai dalam sintesis (misalnya analisis sensitivitas atau pembobotan)."
+       ]
+      },
+      {
+       "code": "RV-15",
+       "k": true,
+       "title": "Setiap pertanyaan kajian dijawab dalam subbagian atau tema yang jelas",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Struktur hasil mengikuti pertanyaan kajian."
+       ]
+      },
+      {
+       "code": "RV-16",
+       "k": true,
+       "title": "Sintesis menghubungkan studi, bukan ringkasan satu studi per paragraf",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Pola, kontradiksi, dan kondisi antarstudi diuraikan; distribusi studi diinterpretasi."
+       ]
+      },
+      {
+       "code": "RV-17",
+       "k": true,
+       "title": "Klaim sintesis menyebut jumlah studi pendukung dan merujuknya",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Misalnya “12 dari 38 studi” disertai sitasi."
+       ]
+      },
+      {
+       "code": "RV-18",
+       "k": false,
+       "title": "Kekuatan atau kepastian bukti dinilai",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Konsistensi, jumlah, dan kualitas studi dipertimbangkan; tidak semua temuan diperlakukan setara."
+       ]
+      },
+      {
+       "code": "RV-19",
+       "k": true,
+       "title": "Kajian terdahulu dibandingkan pada dimensi yang sama",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Cakupan, periode, metode, dan temuan kajian sebelumnya dibandingkan, idealnya dalam tabel pembanding."
+       ]
+      },
+      {
+       "code": "RV-20",
+       "k": true,
+       "title": "Setiap studi yang disertakan tercantum di daftar pustaka atau lampiran",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Daftar studi inklusi lengkap dan dapat ditelusuri."
+       ]
+      },
+      {
+       "code": "RV-21",
+       "k": true,
+       "title": "Keterbatasan metode kajian diakui",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Bias bahasa, basis data, publikasi, kualitas studi, dan subjektivitas pengodean dibahas."
+       ]
+      }
+     ],
+     "plain": "Modul R. Kajian Pustaka Sistematis (semua subtipe sistematis)",
+     "mod": "R"
+    },
+    {
+     "title": "Modul R-SLR. <em>Systematic Literature Review</em> dan <em>Systematic Mapping</em>",
+     "module": true,
+     "items": [
+      {
+       "code": "SLR-01",
+       "k": true,
+       "title": "Daftar periksa PRISMA 2020 terlampir atau butirnya dapat ditelusuri",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Lokasi setiap butir PRISMA dapat ditunjukkan."
+       ]
+      },
+      {
+       "code": "SLR-02",
+       "k": false,
+       "title": "Peta pada <em>systematic mapping</em> memuat jumlah studi per sel",
+       "b": "<em>systematic mapping</em>",
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Kategori klasifikasi dan peta (<em>bubble plot</em>) memuat jumlah studi."
+       ]
+      }
+     ],
+     "plain": "Modul R-SLR. Systematic Literature Review dan Systematic Mapping",
+     "mod": "R-SLR"
+    },
+    {
+     "title": "Modul R-SC. <em>Scoping Review</em>",
+     "module": true,
+     "items": [
+      {
+       "code": "SC-01",
+       "k": true,
+       "title": "PRISMA-ScR dan kerangka Arksey dan O’Malley atau JBI diikuti",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Tahapan kerangka disebut dan dijalankan."
+       ]
+      },
+      {
+       "code": "SC-02",
+       "k": true,
+       "title": "Pertanyaan menggunakan kerangka PCC",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Populasi, konsep, dan konteks dinyatakan."
+       ]
+      },
+      {
+       "code": "SC-03",
+       "k": true,
+       "title": "Hasil dipetakan dan tidak ditarik ke simpulan efektivitas",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Pemetaan (<em>charting</em>) memakai tabel standar."
+       ]
+      },
+      {
+       "code": "SC-04",
+       "k": false,
+       "title": "Alasan tidak melakukan penilaian kualitas dinyatakan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Konsultasi pemangku kepentingan dilaporkan bila dilakukan."
+       ]
+      }
+     ],
+     "plain": "Modul R-SC. Scoping Review",
+     "mod": "R-SC"
+    },
+    {
+     "title": "Modul R-BIB. Bibliometrik",
+     "module": true,
+     "items": [
+      {
+       "code": "BIB-01",
+       "k": true,
+       "title": "Basis data, <em>string</em>, filter, tanggal ekspor, dan jumlah record dilaporkan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Jumlah record sebelum dan sesudah pembersihan disebutkan."
+       ]
+      },
+      {
+       "code": "BIB-02",
+       "k": true,
+       "title": "Perangkat lunak, versi, ambang, dan normalisasi disebutkan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Misalnya VOSviewer, Bibliometrix, atau CiteSpace."
+       ]
+      },
+      {
+       "code": "BIB-03",
+       "k": true,
+       "title": "Indikator bibliometrik diinterpretasi secara substantif",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Produktivitas, sitasi, kolaborasi, dan kookurensi dimaknai, bukan hanya dideskripsikan."
+       ]
+      },
+      {
+       "code": "BIB-04",
+       "k": true,
+       "title": "Peta bibliometrik berlabel lengkap",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Legenda warna, ukuran simpul, dan ambang dicantumkan."
+       ]
+      },
+      {
+       "code": "BIB-05",
+       "k": false,
+       "title": "Keterbatasan data satu basis data dan efek ambang diakui",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Dampaknya pada temuan dibahas."
+       ]
+      }
+     ],
+     "plain": "Modul R-BIB. Bibliometrik",
+     "mod": "R-BIB"
+    },
+    {
+     "title": "Modul R-MA. Meta-Analisis",
+     "module": true,
+     "items": [
+      {
+       "code": "MA-01",
+       "k": true,
+       "title": "Ukuran efek, model, dan estimator ditentukan serta dibenarkan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Model <em>fixed</em> atau <em>random effects</em> beserta alasannya."
+       ]
+      },
+      {
+       "code": "MA-02",
+       "k": true,
+       "title": "Heterogenitas dilaporkan dan dieksplorasi",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "I², τ², atau Q dilaporkan; moderator, subgrup, atau meta-regresi dijelaskan."
+       ]
+      },
+      {
+       "code": "MA-03",
+       "k": true,
+       "title": "Bias publikasi diuji",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "<em>Funnel plot</em>, uji Egger, <em>trim-and-fill</em>, atau <em>fail-safe N</em>, atau keterbatasannya dinyatakan."
+       ]
+      },
+      {
+       "code": "MA-04",
+       "k": true,
+       "title": "Analisis sensitivitas dilaporkan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Misalnya <em>leave-one-out</em> atau tanpa studi berkualitas rendah."
+       ]
+      },
+      {
+       "code": "MA-05",
+       "k": false,
+       "title": "Dependensi ukuran efek ditangani",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Beberapa efek dari satu studi ditangani dengan metode yang sesuai."
+       ]
+      },
+      {
+       "code": "MA-06",
+       "k": false,
+       "title": "<em>Forest plot</em> atau <em>funnel plot</em> berlabel lengkap",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Label efek, interval kepercayaan, bobot, dan ukuran heterogenitas tersedia."
+       ]
+      }
+     ],
+     "plain": "Modul R-MA. Meta-Analisis",
+     "mod": "R-MA"
+    },
+    {
+     "title": "Modul R-NR. Kajian Naratif dan <em>Survey Paper</em>",
+     "module": true,
+     "items": [
+      {
+       "code": "NR-01",
+       "k": true,
+       "title": "Kerangka organisasi kajian dinyatakan dan konsisten",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Taksonomi, kronologi, atau tema dipakai secara konsisten."
+       ]
+      },
+      {
+       "code": "NR-02",
+       "k": true,
+       "title": "Studi dibandingkan pada dimensi yang sama",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Perbandingan disajikan, misalnya dalam tabel pembanding, bukan uraian terpisah satu per satu."
+       ]
+      },
+      {
+       "code": "NR-03",
+       "k": false,
+       "title": "Bias seleksi literatur diakui",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Dampak cara pemilihan sumber terhadap simpulan dibahas."
+       ]
+      },
+      {
+       "code": "NR-04",
+       "k": false,
+       "title": "Tantangan terbuka dan agenda riset diturunkan dari hasil sintesis",
+       "b": "naskah merupakan <em>survey paper</em> atau memuat agenda riset",
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Setiap tantangan atau arah riset ditautkan ke celah yang ditemukan dalam sintesis, bukan daftar umum."
+       ]
+      }
+     ],
+     "plain": "Modul R-NR. Kajian Naratif dan Survey Paper",
+     "mod": "R-NR"
+    },
+    {
+     "title": "Modul K. Artikel Konseptual atau Teoretis",
+     "module": true,
+     "items": [
+      {
+       "code": "KN-01",
+       "k": true,
+       "title": "Tesis atau klaim utama dinyatakan dan dipertahankan di seluruh naskah",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Klaim utama dapat dikutip dan setiap bagian berkontribusi padanya."
+       ]
+      },
+      {
+       "code": "KN-02",
+       "k": true,
+       "title": "Konsep kunci didefinisikan dengan rujukan primer",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Definisi dan batas istilah dijelaskan."
+       ]
+      },
+      {
+       "code": "KN-03",
+       "k": true,
+       "title": "Argumen tersusun bertahap dan setiap langkah didukung sumber atau penalaran eksplisit",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Tidak ada lompatan logika yang tidak dijelaskan."
+       ]
+      },
+      {
+       "code": "KN-04",
+       "k": false,
+       "title": "Pandangan tandingan atau keberatan dibahas",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Sekurang-kurangnya satu posisi berbeda ditanggapi."
+       ]
+      },
+      {
+       "code": "KN-05",
+       "k": true,
+       "title": "Kontribusi teoretis dan batas berlakunya dinyatakan",
+       "b": null,
+       "lab": "Yang diharapkan",
+       "cr": [
+        "Kondisi atau konteks berlakunya argumen disebut."
+       ]
+      }
+     ],
+     "plain": "Modul K. Artikel Konseptual atau Teoretis",
+     "mod": "K"
+    }
+   ]
+  }
+ ],
+ "signRole": "Reviewer",
+ "short": null,
+ "version": "2.3"
+}

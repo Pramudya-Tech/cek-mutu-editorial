@@ -1,0 +1,414 @@
+{
+ "id": "editor-rev-g4",
+ "role": "Editor",
+ "var": "rev",
+ "varName": "Review, Survey & Konseptual",
+ "gate": 4,
+ "title": "Pengendalian Mutu Produksi dan Publikasi",
+ "sub": "Production and Publication Quality Control",
+ "stage": "Tahap OJS: <em>Production</em> → <em>Publication</em>   |   Penanggung jawab: Editor Produksi (<em>Production Editor</em>) / Penata Letak (<em>Layout Editor</em>), dengan persetujuan editor berwenang",
+ "intro": [],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah (Manuscript ID)",
+   "html": "ID naskah (<em>Manuscript ID</em>)",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Nama editor/pemeriksa",
+   "html": "Nama editor/pemeriksa",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Tanggal pemeriksaan",
+   "html": "Tanggal pemeriksaan",
+   "wide": false,
+   "type": "date",
+   "ph": ""
+  },
+  {
+   "label": "Gaya sitasi (citation style)",
+   "html": "Gaya sitasi (<em>citation style</em>)",
+   "wide": false,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "APA 7",
+     "other": false
+    },
+    {
+     "t": "IEEE",
+     "other": false
+    },
+    {
+     "t": "Lainnya sesuai kebijakan",
+     "other": true
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Format galley",
+   "html": "Format <em>galley</em>",
+   "wide": false,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "PDF",
+     "other": false
+    },
+    {
+     "t": "HTML",
+     "other": false
+    },
+    {
+     "t": "XML",
+     "other": false
+    },
+    {
+     "t": "lainnya",
+     "other": true
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Volume/Nomor/Rubrik",
+   "html": "Volume/Nomor/Rubrik",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel 4A. Indikator Inti (berlaku untuk semua jenis artikel)",
+   "notes": [
+    "Masukkan ulang seluruh metadata artikel pada OJS berdasarkan naskah final versi terbaru yang siap dipublikasikan, dan pastikan seluruh informasi sesuai dengan naskah tersebut."
+   ],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "A. Berkas Sumber dan Templat",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-01",
+       "k": true,
+       "title": "<em>Galley</em> disusun dari berkas final hasil penyuntingan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nama berkas sumber identik dengan berkas yang disahkan pada Gate 3."
+       ]
+      },
+      {
+       "code": "G4-02",
+       "k": false,
+       "title": "Format halaman sesuai dengan templat jurnal",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Ukuran kertas, orientasi, margin, kolom, fon, ukuran huruf, spasi, perataan, dan indentasi sesuai dengan spesifikasi templat."
+       ]
+      }
+     ],
+     "plain": "A. Berkas Sumber dan Templat",
+     "mod": null
+    },
+    {
+     "title": "B. Halaman Pertama (<em>Front Matter</em>)",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-16",
+       "k": true,
+       "title": "Judul, nama penulis, afiliasi, surel korespondensi, dan ORCID pada halaman pertama benar",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Judul, nama dan urutan penulis, afiliasi, surel korespondensi, serta ORCID pada halaman pertama sesuai dengan versi final hasil penyuntingan dan sama dengan data yang diinput pada OJS. Ejaan nama dan urutan penulis diperiksa huruf demi huruf. Afiliasi dicantumkan secara lengkap dan konsisten pada naskah maupun OJS, termasuk departemen/program studi, fakultas/unit kerja, institusi, kota, dan negara sesuai dengan struktur afiliasi penulis."
+       ]
+      },
+      {
+       "code": "G4-11",
+       "k": true,
+       "title": "Identitas terbitan benar",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nama jurnal, ISSN cetak dan elektronik, volume, nomor, rubrik, halaman atau nomor artikel (<em>article number</em>), serta tanggal sesuai."
+       ]
+      },
+      {
+       "code": "G4-17",
+       "k": false,
+       "title": "Riwayat naskah benar",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tanggal diterima, direvisi, diterima akhir, dan terbit sesuai dengan catatan OJS."
+       ]
+      },
+      {
+       "code": "G4-18",
+       "k": false,
+       "title": "Petunjuk sitasi artikel (<em>How to cite</em>) benar",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Ditulis dalam gaya sitasi jurnal dengan nama penulis, tahun, judul, volume, nomor, halaman atau nomor artikel, dan DOI yang benar."
+       ]
+      },
+      {
+       "code": "G4-12",
+       "k": true,
+       "title": "Status DOI dinyatakan sesuai dengan bukti",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sebelum terbit, DOI dicantumkan dalam format jurnal dan bukti deposit Crossref tersedia. DOI tidak dinyatakan terdaftar tanpa bukti deposit."
+       ]
+      },
+      {
+       "code": "G4-13",
+       "k": true,
+       "title": "Hak cipta, lisensi, dan atribusi dicantumkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pemegang hak cipta dan jenis lisensi tampil pada PDF, HTML, dan metadata sesuai dengan kebijakan jurnal."
+       ]
+      }
+     ],
+     "plain": "B. Halaman Pertama (Front Matter)",
+     "mod": null
+    },
+    {
+     "title": "C. Tata Letak: Judul Bagian, Kepala dan Kaki Halaman, serta Penomoran",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-03",
+       "k": false,
+       "title": "Hierarki judul bagian (<em>heading</em>) dan tampilan visual konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tingkat judul bagian sesuai dengan naskah final dan gaya templat."
+       ]
+      },
+      {
+       "code": "G4-19",
+       "k": false,
+       "title": "Kepala dan kaki halaman (<em>header/footer</em>) benar pada setiap halaman",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Judul berjalan (<em>running head</em>), nama jurnal, volume, nomor, tahun, dan nomor halaman tampil benar dan konsisten."
+       ]
+      },
+      {
+       "code": "G4-05",
+       "k": false,
+       "title": "Pemenggalan halaman, alur teks, dan penomoran benar",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat teks yang hilang atau terpotong; nomor halaman, tabel, gambar, dan persamaan berurutan."
+       ]
+      }
+     ],
+     "plain": "C. Tata Letak: Judul Bagian, Kepala dan Kaki Halaman, serta Penomoran",
+     "mod": null
+    },
+    {
+     "title": "D. Batang Tubuh",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-06",
+       "k": true,
+       "title": "Pembacaan pruf akhir (<em>proofreading</em>) terhadap versi final",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat perbedaan teks atau angka yang tidak disetujui; kesalahan mekanis telah dikoreksi."
+       ]
+      }
+     ],
+     "plain": "D. Batang Tubuh",
+     "mod": null
+    },
+    {
+     "title": "E. Tabel, Gambar, dan Rumus",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-04",
+       "k": true,
+       "title": "Tabel, gambar, grafik, rumus, dan keterangan tampil utuh serta terbaca",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terpotong; teks di dalam gambar terbaca pada perbesaran 100%."
+       ]
+      }
+     ],
+     "plain": "E. Tabel, Gambar, dan Rumus",
+     "mod": null
+    },
+    {
+     "title": "F. Pernyataan Akhir, Referensi, dan Tautan",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-20",
+       "k": false,
+       "title": "Pernyataan akhir naskah tampil lengkap pada <em>galley</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Ucapan terima kasih, konflik kepentingan, pendanaan, ketersediaan data, penggunaan AI, dan kontribusi penulis sama dengan versi final hasil penyuntingan."
+       ]
+      },
+      {
+       "code": "G4-07",
+       "k": false,
+       "title": "Sitasi dan daftar referensi tetap benar setelah penataan letak",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "IEEE: nomor sitasi tidak bergeser. APA: urutan dan format sesuai dengan templat. Tidak terdapat entri yang terpotong."
+       ]
+      },
+      {
+       "code": "G4-08",
+       "k": false,
+       "title": "Tautan DOI, URL, dan rujukan silang berfungsi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap tautan diklik dan membuka tujuan yang benar."
+       ]
+      }
+     ],
+     "plain": "F. Pernyataan Akhir, Referensi, dan Tautan",
+     "mod": null
+    },
+    {
+     "title": "G. Berkas <em>Galley</em> dan Aksesibilitas",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-09",
+       "k": false,
+       "title": "<em>Galley</em> memenuhi persyaratan keterbacaan dan aksesibilitas",
+       "b": "jurnal menetapkan persyaratan aksesibilitas",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Teks PDF dapat dipilih dan dicari; teks alternatif (<em>alt text</em>) atau penandaan (<em>tag</em>) tersedia apabila diwajibkan; HTML tampil dengan benar."
+       ]
+      }
+     ],
+     "plain": "G. Berkas Galley dan Aksesibilitas",
+     "mod": null
+    },
+    {
+     "title": "H. Metadata OJS dan Pemeriksaan Pascaterbit",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-10",
+       "k": true,
+       "title": "Metadata OJS identik dengan <em>galley</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Judul, penulis, urutan penulis, afiliasi, abstrak, kata kunci, dan referensi pada OJS sesuai dengan <em>galley</em>."
+       ]
+      },
+      {
+       "code": "G4-21",
+       "k": false,
+       "title": "Pemeriksaan pascaterbit: <em>landing page</em>, unduhan <em>galley</em>, dan DOI berfungsi",
+       "b": "dilakukan setelah publikasi",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Dilakukan setelah artikel terbit: DOI mengarah ke <em>landing page</em> artikel yang benar, <em>galley</em> dapat diunduh, dan metadata tampil dengan benar."
+       ]
+      }
+     ],
+     "plain": "H. Metadata OJS dan Pemeriksaan Pascaterbit",
+     "mod": null
+    },
+    {
+     "title": "I. Penutupan Pruf dan Persetujuan Publikasi",
+     "module": false,
+     "items": [
+      {
+       "code": "G4-14",
+       "k": true,
+       "title": "Koreksi pruf dari penulis telah ditutup",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Semua koreksi diterapkan atau ditolak disertai alasan; perubahan substantif dieskalasi kepada editor."
+       ]
+      },
+      {
+       "code": "G4-15",
+       "k": true,
+       "title": "Persetujuan publikasi terdokumentasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nama, peran, dan tanggal persetujuan editor berwenang tercatat."
+       ]
+      },
+      {
+       "code": "G4-22",
+       "k": true,
+       "title": "Seluruh berkas akhir telah diunggah pada tahap <em>Production</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Seluruh dokumen suplementer yang dipersyaratkan, dokumen final siap terbit, serta laporan kemiripan (<em>similarity report</em>) hasil pemeriksaan terakhir telah diunggah pada tahap akhir <em>Production</em> di OJS. Setiap berkas merupakan versi terbaru, diberi nama yang jelas, dapat dibuka tanpa galat, dan sesuai dengan naskah final yang akan dipublikasikan."
+       ]
+      }
+     ],
+     "plain": "I. Penutupan Pruf dan Persetujuan Publikasi",
+     "mod": null
+    }
+   ]
+  }
+ ],
+ "signRole": "Editor",
+ "short": "Produksi",
+ "version": "2.3"
+}

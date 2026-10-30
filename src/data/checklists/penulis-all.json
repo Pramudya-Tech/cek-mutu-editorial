@@ -1,0 +1,185 @@
+{
+ "id": "penulis-all",
+ "role": "Penulis",
+ "var": "all",
+ "varName": "Semua jenis artikel",
+ "gate": null,
+ "title": "Checklist Penulis",
+ "sub": null,
+ "stage": null,
+ "intro": [],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah",
+   "html": "ID naskah",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jenis artikel",
+   "html": "Jenis artikel",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Penulis korespondensi",
+   "html": "Penulis korespondensi",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel P-D. Kueri Penyuntingan dan Pemeriksaan Pruf",
+   "notes": [],
+   "cols": [
+    "No.",
+    "Butir Periksa",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "Kueri Penyuntingan dan Pemeriksaan Pruf",
+     "module": false,
+     "items": [
+      {
+       "code": "PD-01",
+       "k": true,
+       "title": "Seluruh perubahan telah diterapkan pada naskah akhir tanpa menyisakan isi versi lama",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Setiap perbaikan dan koreksi yang telah diserahkan penulis serta disepakati dengan editor, termasuk jawaban atas kueri penyunting, sudah diterapkan pada pruf atau <em>galley</em>. Tidak ada teks, angka, tabel, gambar, atau referensi dari versi lama yang masih tertinggal."
+       ]
+      },
+      {
+       "code": "PD-02",
+       "k": true,
+       "title": "Identitas penulis benar",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Nama, urutan penulis, afiliasi, surel korespondensi, dan ORCID pada pruf atau <em>galley</em> diperiksa huruf demi huruf terhadap data penulis. Perubahan penulis tidak dilakukan pada tahap ini tanpa persetujuan editor dan semua penulis."
+       ]
+      },
+      {
+       "code": "PD-03",
+       "k": true,
+       "title": "Judul, abstrak, dan kata kunci sama dengan versi yang diterima",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Tidak ada perubahan makna akibat penyuntingan atau penataan letak."
+       ]
+      },
+      {
+       "code": "PD-04",
+       "k": true,
+       "title": "Identitas terbitan dan riwayat naskah benar",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Nama jurnal, volume, nomor, tahun, halaman atau nomor artikel sesuai, serta tanggal diterima, direvisi, diterima akhir, dan terbit cocok dengan surel pemberitahuan atau riwayat pengajuan milik penulis."
+       ]
+      },
+      {
+       "code": "PD-05",
+       "k": false,
+       "title": "Petunjuk sitasi (<em>How to cite</em>), DOI, dan lisensi tercantum dengan benar",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Petunjuk sitasi memuat nama penulis, tahun, judul, volume, nomor, halaman atau nomor artikel, dan DOI yang benar; DOI serta pemegang hak cipta dan jenis lisensi tercantum sesuai kebijakan jurnal."
+       ]
+      },
+      {
+       "code": "PD-06",
+       "k": true,
+       "title": "Tabel, gambar, dan rumus tampil utuh dan terbaca",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Tidak ada sel, label, atau simbol yang hilang atau terpotong."
+       ]
+      },
+      {
+       "code": "PD-07",
+       "k": true,
+       "title": "Angka dan data sama dengan versi yang diterima",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Angka pada teks, tabel, dan gambar dicocokkan dengan naskah yang diterima."
+       ]
+      },
+      {
+       "code": "PD-08",
+       "k": false,
+       "title": "Sitasi dan daftar referensi benar, dan tautan DOI berfungsi",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Sampel tautan DOI dan URL dibuka; nomor atau nama sitasi sesuai daftar referensi."
+       ]
+      },
+      {
+       "code": "PD-09",
+       "k": false,
+       "title": "Pernyataan akhir naskah lengkap",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Ucapan terima kasih, pendanaan, konflik kepentingan, kontribusi penulis, ketersediaan data, dan penggunaan AI (AI Disclosure Statement) tercantum."
+       ]
+      },
+      {
+       "code": "PD-10",
+       "k": true,
+       "title": "Koreksi terbatas pada kesalahan dan tidak menambah isi baru",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Setiap koreksi dicatat pada Report A3; perubahan substantif diajukan kepada editor dengan alasan."
+       ]
+      },
+      {
+       "code": "PD-11",
+       "k": true,
+       "title": "Semua kueri penyunting naskah telah dijawab",
+       "b": null,
+       "lab": "Dianggap siap apabila",
+       "cr": [
+        "Setiap kueri dijawab dengan persetujuan, penolakan beralasan, atau teks pengganti."
+       ]
+      }
+     ],
+     "plain": "Kueri Penyuntingan dan Pemeriksaan Pruf",
+     "mod": null
+    }
+   ]
+  }
+ ],
+ "signRole": "Penulis korespondensi",
+ "short": null,
+ "version": "2.3"
+}

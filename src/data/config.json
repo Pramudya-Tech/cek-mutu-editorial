@@ -1,0 +1,5 @@
+{
+  "registryUrl": "",
+  "registryKey": "",
+  "note": "registryUrl = URL Web App Google Apps Script (lihat apps-script/Code.gs). Kosongkan untuk mode lokal saja."
+}

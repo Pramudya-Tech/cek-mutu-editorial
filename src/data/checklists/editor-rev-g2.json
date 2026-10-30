@@ -1,0 +1,1087 @@
+{
+ "id": "editor-rev-g2",
+ "role": "Editor",
+ "var": "rev",
+ "varName": "Review, Survey & Konseptual",
+ "gate": 2,
+ "title": "Pre-Acceptance Editorial Check",
+ "sub": "Scientific Review and Editorial Evaluation",
+ "stage": "Tahap OJS: <em>Review</em> → <em>Copyediting</em> (sebelum naskah dinyatakan diterima)   |   Penanggung jawab: Editor Penanggung Jawab Naskah (<em>Handling Editor</em>) / Editor Kepala (<em>Editor in Chief</em>), dengan mempertimbangkan laporan <em>reviewer</em>",
+ "intro": [],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah (Manuscript ID)",
+   "html": "ID naskah (<em>Manuscript ID</em>)",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Nama editor/pemeriksa",
+   "html": "Nama editor/pemeriksa",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Tanggal pemeriksaan",
+   "html": "Tanggal pemeriksaan",
+   "wide": false,
+   "type": "date",
+   "ph": ""
+  },
+  {
+   "label": "Gaya sitasi (citation style)",
+   "html": "Gaya sitasi (<em>citation style</em>)",
+   "wide": false,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "APA 7",
+     "other": false
+    },
+    {
+     "t": "IEEE",
+     "other": false
+    },
+    {
+     "t": "Lainnya sesuai kebijakan",
+     "other": true
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Jenis artikel/desain",
+   "html": "Jenis artikel/desain",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Putaran telaah",
+   "html": "Putaran telaah",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jumlah laporan reviewer",
+   "html": "Jumlah laporan <em>reviewer</em>",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Versi berkas yang diperiksa",
+   "html": "Versi berkas yang diperiksa",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jenis artikel dan modul",
+   "html": "Jenis artikel dan modul",
+   "wide": true,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "Kajian sistematis",
+     "other": false
+    },
+    {
+     "t": "SLR/mapping",
+     "other": false
+    },
+    {
+     "t": "Scoping (SC)",
+     "other": false
+    },
+    {
+     "t": "Bibliometrik (BIB)",
+     "other": false
+    },
+    {
+     "t": "Meta-analisis (MA)",
+     "other": false
+    },
+    {
+     "t": "Kajian naratif/survey paper (NR)",
+     "other": false
+    },
+    {
+     "t": "Konseptual/teoretis (K)",
+     "other": false
+    }
+   ],
+   "multi": true
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel 2A. Indikator Inti (berlaku untuk semua jenis artikel)",
+   "notes": [],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "A. Proses Telaah Sejawat (<em>Peer Review</em>)",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-01",
+       "k": true,
+       "title": "<em>Reviewer</em> memiliki keahlian yang sesuai dan bebas dari konflik kepentingan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Bidang keahlian <em>reviewer</em> sesuai dengan topik atau metode naskah; konflik kepentingan tidak ada atau telah dikelola dan dicatat."
+       ]
+      },
+      {
+       "code": "G2-02",
+       "k": true,
+       "title": "Laporan <em>reviewer</em> mencukupi dari segi jumlah dan substansi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah laporan sesuai dengan kebijakan jurnal; setiap laporan memuat alasan yang spesifik; laporan yang bias atau tidak profesional ditandai."
+       ]
+      },
+      {
+       "code": "G2-21",
+       "k": false,
+       "title": "Perbedaan rekomendasi antar-<em>reviewer</em> dipertimbangkan secara eksplisit",
+       "b": "rekomendasi <em>reviewer</em> berbeda",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Catatan editor menjelaskan rekomendasi yang diikuti beserta alasannya; <em>reviewer</em> tambahan diundang apabila perbedaan menyangkut validitas."
+       ]
+      }
+     ],
+     "plain": "A. Proses Telaah Sejawat (Peer Review)",
+     "mod": null
+    },
+    {
+     "title": "B. Judul dan Abstrak",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-22",
+       "k": true,
+       "title": "Judul dan abstrak konsisten dengan temuan dan simpulan versi terbaru",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Seluruh temuan, angka, dan klaim dalam judul dan abstrak sesuai dengan hasil sintesis serta simpulan naskah revisi terbaru. Judul dirumuskan secara spesifik untuk mencerminkan fokus atau kontribusi kajian dan tidak menggunakan kata generik seperti “Pengembangan” atau “Analisis”. Nama lokasi penelitian tidak dicantumkan dalam judul, sedangkan populasi dapat disebutkan apabila relevan dengan fokus kajian. Panjang judul maksimal 18 kata dan diutamakan tidak melebihi dua baris pada templat jurnal."
+       ]
+      },
+      {
+       "code": "G2-27",
+       "k": true,
+       "title": "Label jenis artikel dan nama desain konsisten pada judul, abstrak, dan metode",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jenis artikel (misalnya <em>systematic review</em>, <em>scoping review</em>, <em>survey paper</em>, atau artikel konseptual) dan nama jenis kajian sama pada judul, abstrak, dan metode, serta sesuai dengan prosedur yang benar-benar dipakai; kajian naratif tidak diberi label sistematis."
+       ]
+      }
+     ],
+     "plain": "B. Judul dan Abstrak",
+     "mod": null
+    },
+    {
+     "title": "C. Pendahuluan dan Kajian Pustaka",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-34",
+       "k": false,
+       "title": "Fenomena, <em>state of the art</em>, dan kesenjangan kajian membangun dasar kajian yang memadai",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Fenomena global dan nasional disajikan pada awal pendahuluan secara relevan dengan fokus kajian serta didukung data atau referensi yang dapat dipertanggungjawabkan. <em>State of the art</em> memetakan temuan dan pendekatan penelitian serta kajian pustaka terdahulu sehingga menunjukkan perkembangan pengetahuan dalam bidang tersebut. Kesenjangan diturunkan secara jelas dari keterbatasan, inkonsistensi temuan, atau persoalan yang belum terjawab dalam literatur yang ditinjau sehingga kebutuhan akan kajian ini terjustifikasi."
+       ]
+      },
+      {
+       "code": "G2-03",
+       "k": true,
+       "title": "Masalah dan tujuan kajian konsisten dengan rasionalnya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pentingnya masalah dinyatakan dan tujuan kajian menjawab masalah tersebut."
+       ]
+      },
+      {
+       "code": "G2-04",
+       "k": true,
+       "title": "Landasan konsep dan posisi terhadap kajian terdahulu sesuai dengan tujuan kajian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Konsep utama didefinisikan dengan rujukan primer; posisi kajian ini terhadap kajian pustaka atau <em>survey paper</em> terdahulu dijelaskan; artikel konseptual menurunkan argumen dari teori yang relevan."
+       ]
+      },
+      {
+       "code": "G2-33",
+       "k": true,
+       "title": "Kerangka konseptual atau taksonomi dipakai konsisten sampai sintesis dan pembahasan",
+       "b": "naskah menggunakan kerangka teori, kerangka konseptual, atau taksonomi",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kerangka atau taksonomi yang dinyatakan dipakai sebagai kategori ekstraksi atau sintesis dan dipakai kembali dalam pembahasan."
+       ]
+      },
+      {
+       "code": "G2-05",
+       "k": true,
+       "title": "Literatur digunakan secara tepat untuk mendukung klaim",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Klaim kunci disertai sitasi; sekurang-kurangnya tiga sitasi acak diperiksa ke sumber aslinya dan benar-benar mendukung klaim; sumber primer dikutip untuk klaim penting; rujukan metodologis kunci (instrumen, teori, teknik analisis, pedoman) tercantum; sumber beragam dan tidak bertumpu pada satu kelompok penulis. Usia referensi bukan satu-satunya dasar penilaian."
+       ]
+      },
+      {
+       "code": "G2-06",
+       "k": true,
+       "title": "Klaim kontribusi didukung oleh literatur dan temuan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kontribusi dinyatakan secara spesifik (misalnya taksonomi baru, pemetaan celah, sintesis bukti, atau proposisi teoretis), dibedakan dari kajian atau <em>survey paper</em> terdahulu pada topik yang sama, dan tidak melampaui hasil sintesis atau argumen."
+       ]
+      }
+     ],
+     "plain": "C. Pendahuluan dan Kajian Pustaka",
+     "mod": null
+    },
+    {
+     "title": "D. Metode Kajian Pustaka atau Pendekatan Argumentasi",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-07",
+       "k": true,
+       "title": "Jenis kajian atau pendekatan argumentasi sesuai dengan pertanyaan kajian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pilihan jenis kajian (sistematis, <em>scoping</em>, bibliometrik, meta-analisis, naratif atau <em>survey paper</em>, atau konseptual) sesuai dengan pertanyaan dan dijelaskan alasannya; klaim efektivitas hanya diajukan oleh kajian yang mensintesis bukti efektivitas."
+       ]
+      },
+      {
+       "code": "G2-08",
+       "k": true,
+       "title": "Sumber literatur serta prosedur penelusuran dan seleksi dilaporkan secara transparan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kajian sistematis, <em>scoping review</em>, bibliometrik, dan meta-analisis melaporkan basis data, <em>string</em> pencarian, tanggal pencarian, rentang tahun, kriteria inklusi dan eksklusi, serta alur seleksi. Kajian naratif dan <em>survey paper</em> menyatakan dasar pemilihan literatur. Artikel konseptual menyatakan sumber utama argumen."
+       ]
+      },
+      {
+       "code": "G2-09",
+       "k": true,
+       "title": "Prosedur ekstraksi dan sintesis dilaporkan dan sesuai dengan jenis kajian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Cara ekstraksi atau pengodean data, metode sintesis (tematik, naratif, bibliometrik, atau statistik), serta perangkat lunak dan versinya disebutkan. Artikel konseptual menunjukkan langkah argumen yang runtut."
+       ]
+      },
+      {
+       "code": "G2-10",
+       "k": true,
+       "title": "Kualitas studi yang disintesis atau ketelitian argumentasi ditunjukkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kajian sistematis dan meta-analisis menilai kualitas atau risiko bias studi dengan alat yang disebutkan; <em>scoping review</em> menjelaskan alasan apabila tidak menilai kualitas; bibliometrik menjelaskan pembersihan data; artikel konseptual menangani pandangan tandingan. Rincian per jenis tercantum pada Tabel 2B."
+       ]
+      },
+      {
+       "code": "G2-32",
+       "k": true,
+       "title": "Penggunaan AI generatif sebagai alat penelitian dilaporkan",
+       "b": "AI dipakai sebagai alat kajian (bukan hanya bantuan penulisan)",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Apabila AI dipakai untuk penyaringan, ekstraksi, pengodean, atau sintesis, naskah melaporkan nama alat, versi, <em>prompt</em> atau pengaturan, peran, dan validasi oleh manusia."
+       ]
+      }
+     ],
+     "plain": "D. Metode Kajian Pustaka atau Pendekatan Argumentasi",
+     "mod": null
+    },
+    {
+     "title": "E. Hasil Sintesis atau Argumen",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-12",
+       "k": true,
+       "title": "Hasil sintesis dapat ditelusuri ke studi sumber dan konsisten antarbagian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah studi sama pada abstrak, diagram alur, tabel karakteristik, dan teks; setiap klaim sintesis merujuk studi pendukungnya; abstrak tidak bertentangan dengan hasil. Pada artikel konseptual, setiap langkah argumen didukung sumber atau penalaran eksplisit."
+       ]
+      },
+      {
+       "code": "G2-23",
+       "k": true,
+       "title": "Pelaporan statistik sintesis lengkap",
+       "b": "meta-analisis atau analisis statistik bibliometrik",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Ukuran efek gabungan, interval kepercayaan, heterogenitas, dan model dilaporkan; perangkat lunak disebutkan."
+       ]
+      },
+      {
+       "code": "G2-24",
+       "k": false,
+       "title": "Tabel dan gambar mendukung temuan dan tidak duplikatif",
+       "b": "naskah memuat tabel atau gambar",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tabel karakteristik studi, diagram alur, peta, atau gambar sintesis memuat data yang relevan dan dibahas dalam naskah. Data yang sama tidak disajikan sekaligus dalam tabel dan gambar, maupun diulang pada beberapa tabel atau gambar. Apabila ditemukan penyajian ganda, hanya satu bentuk yang dipertahankan, dipilih berdasarkan kesesuaiannya dengan tujuan penyajian, karakteristik data, dan kejelasan penyampaian temuan. Judul, keterangan, dan catatan memungkinkan tabel atau gambar dipahami secara mandiri."
+       ]
+      }
+     ],
+     "plain": "E. Hasil Sintesis atau Argumen",
+     "mod": null
+    },
+    {
+     "title": "F. Pembahasan",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-13",
+       "k": true,
+       "title": "Pembahasan menafsirkan hasil sintesis dan membandingkannya dengan kajian terdahulu",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Hasil sintesis ditafsirkan terhadap pertanyaan kajian; dibandingkan dengan kajian pustaka atau <em>survey paper</em> terdahulu pada dimensi yang sama; implikasi teoretis, praktis, dan agenda riset diturunkan dari hasil sintesis."
+       ]
+      },
+      {
+       "code": "G2-31",
+       "k": false,
+       "title": "Penjelasan alternatif atas pola hasil sintesis dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pembahasan menimbang faktor yang dapat menjelaskan pola hasil, misalnya bias publikasi, heterogenitas konteks atau metode studi, atau keterbatasan basis data. Artikel konseptual membahas keberatan atau pandangan tandingan."
+       ]
+      },
+      {
+       "code": "G2-30",
+       "k": true,
+       "title": "Pembahasan dan simpulan tidak memuat hasil atau data baru",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Semua angka, temuan, dan studi yang dibahas pada pembahasan dan simpulan telah muncul di bagian hasil sintesis."
+       ]
+      },
+      {
+       "code": "G2-11",
+       "k": true,
+       "title": "Keterbatasan metode kajian dan potensi bias diakui dan dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Keterbatasan spesifik dibahas beserta dampaknya, misalnya basis data, bahasa, rentang tahun, kriteria seleksi, dan bias seleksi literatur; arah riset lanjutan diturunkan dari celah yang ditemukan."
+       ]
+      }
+     ],
+     "plain": "F. Pembahasan",
+     "mod": null
+    },
+    {
+     "title": "G. Simpulan dan Kekuatan Klaim",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-14",
+       "k": true,
+       "title": "Simpulan tidak melampaui bukti",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Simpulan disajikan dalam satu hingga dua paragraf dan menjawab setiap pertanyaan kajian atau mempertahankan tesis. Isinya menyintesis hasil kajian serta memberikan pemaknaan atau pandangan penulis mengenai arti dan kontribusi hasil tersebut, tanpa sekadar mengulang uraian hasil. Setiap klaim dapat dipetakan ke hasil sintesis atau argumen, sedangkan rekomendasi proporsional terhadap jumlah dan kualitas studi. Bagian akhir simpulan memuat keterbatasan utama kajian dan saran riset selanjutnya yang secara spesifik berkaitan dengan keterbatasan tersebut."
+       ]
+      },
+      {
+       "code": "G2-28",
+       "k": true,
+       "title": "Klaim kausal atau efektivitas hanya diajukan apabila studi yang disintesis mendukung",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kata seperti “pengaruh”, “efektif”, atau “dampak” hanya dipakai apabila studi sumber menggunakan desain yang mendukung inferensi kausal; <em>scoping review</em>, bibliometrik, dan kajian naratif tidak menarik simpulan efektivitas; jumlah studi pendukung disebutkan."
+       ]
+      }
+     ],
+     "plain": "G. Simpulan dan Kekuatan Klaim",
+     "mod": null
+    },
+    {
+     "title": "H. Pelaporan dan Ketersediaan Data",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-15",
+       "k": false,
+       "title": "Pedoman pelaporan yang sesuai dengan desain dipenuhi",
+       "b": "jurnal mewajibkan daftar periksa pelaporan",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Butir wajib dalam pedoman pelaporan yang sesuai (misalnya PRISMA 2020, PRISMA-ScR, atau MARS) dilaporkan atau ketiadaannya dijelaskan."
+       ]
+      },
+      {
+       "code": "G2-25",
+       "k": true,
+       "title": "Daftar studi, data ekstraksi, atau data bibliometrik tersedia sesuai dengan pernyataan ketersediaan data",
+       "b": "jurnal mewajibkan pernyataan ketersediaan data atau naskah menyatakan data tersedia",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Daftar studi yang disertakan, tabel ekstraksi, <em>string</em> pencarian lengkap, atau berkas ekspor basis data dapat diakses melalui lampiran atau repositori, atau alasan pembatasan dinyatakan."
+       ]
+      }
+     ],
+     "plain": "H. Pelaporan dan Ketersediaan Data",
+     "mod": null
+    },
+    {
+     "title": "I. Revisi, Integritas, dan Dokumentasi Keputusan",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-17",
+       "k": true,
+       "title": "Penulis menanggapi setiap komentar <em>reviewer</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap komentar dijawab, baik dengan melaksanakan perubahan disertai lokasinya maupun dengan menolaknya disertai alasan."
+       ]
+      },
+      {
+       "code": "G2-18",
+       "k": true,
+       "title": "Revisi yang dijanjikan benar-benar terdapat dalam naskah",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Perubahan utama ditemukan pada lokasi yang disebutkan dalam surat tanggapan (<em>response letter</em>)."
+       ]
+      },
+      {
+       "code": "G2-26",
+       "k": true,
+       "title": "Perubahan kepenulisan selama proses telaah disetujui oleh semua penulis",
+       "b": "terdapat permintaan perubahan penulis",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Permintaan penambahan, penghapusan, atau perubahan urutan penulis disertai alasan dan persetujuan tertulis dari semua penulis."
+       ]
+      },
+      {
+       "code": "G2-19",
+       "k": true,
+       "title": "Isu integritas yang ditandai telah diselesaikan",
+       "b": "terdapat isu integritas yang ditandai",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Isu ditutup dengan dokumentasi langkah yang ditempuh (pedoman COPE atau yang setara)."
+       ]
+      },
+      {
+       "code": "G2-20",
+       "k": true,
+       "title": "Dasar keputusan dan versi naskah yang diterima terdokumentasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Alasan keputusan merujuk pada temuan <em>reviewer</em> atau editor; versi yang diterima teridentifikasi melalui nama berkas dan tanggal."
+       ]
+      }
+     ],
+     "plain": "I. Revisi, Integritas, dan Dokumentasi Keputusan",
+     "mod": null
+    }
+   ]
+  },
+  {
+   "title": "Tabel 2B. Modul Kecukupan per Desain (kerjakan modul yang sesuai)",
+   "notes": [
+    "Modul yang tidak sesuai dengan jenis artikel tidak diisi dan tidak perlu diberi status NA. Penomoran melanjutkan Tabel A."
+   ],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "Modul R. Kajian Pustaka Sistematis (semua subtipe sistematis)",
+     "module": true,
+     "items": [
+      {
+       "code": "RV-01",
+       "k": true,
+       "title": "Pedoman pelaporan kajian disebut dan diikuti",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya PRISMA 2020, PRISMA-ScR, JBI, Arksey dan O’Malley, Kitchenham, MOOSE, atau ENTREQ sesuai subtipe."
+       ]
+      },
+      {
+       "code": "RV-02",
+       "k": false,
+       "title": "Protokol terdaftar atau alasan tidak mendaftar dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nomor registrasi (PROSPERO, OSF) dicantumkan, atau alasannya dijelaskan."
+       ]
+      },
+      {
+       "code": "RV-03",
+       "k": true,
+       "title": "Pertanyaan kajian dirumuskan dengan kerangka yang sesuai",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya PICO, PCC, atau SPIDER, selaras dengan tujuan."
+       ]
+      },
+      {
+       "code": "RV-04",
+       "k": true,
+       "title": "Sumber pencarian beserta alasan pemilihannya dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Basis data yang relevan dengan cakupan bidang dan alasannya; bawaan sekurang-kurangnya dua basis data dapat disesuaikan dengan kebijakan jurnal."
+       ]
+      },
+      {
+       "code": "RV-05",
+       "k": true,
+       "title": "<em>String</em> pencarian dapat direproduksi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kata kunci, operator, kolom, dan filter disajikan lengkap di tabel atau lampiran."
+       ]
+      },
+      {
+       "code": "RV-06",
+       "k": true,
+       "title": "Prosedur penyaringan dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tahap judul/abstrak dan teks lengkap, jumlah penyaring, penyelesaian perbedaan, dan kesepakatan (misalnya kappa) dilaporkan."
+       ]
+      },
+      {
+       "code": "RV-07",
+       "k": true,
+       "title": "Prosedur ekstraksi atau pengodean data dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Formulir, uji coba, pelaksana, dan variabel yang diekstraksi disebutkan."
+       ]
+      },
+      {
+       "code": "RV-08",
+       "k": true,
+       "title": "Penilaian kualitas atau risiko bias menggunakan alat bernama",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya JBI, CASP, MMAT, RoB 2, ROBINS-I, atau Newcastle–Ottawa; ketiadaannya pada <em>scoping review</em> dinyatakan."
+       ]
+      },
+      {
+       "code": "RV-09",
+       "k": true,
+       "title": "Metode sintesis dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tematik, naratif, tabulasi, meta-analisis, atau bibliometrik, termasuk cara menangani studi dengan desain berbeda."
+       ]
+      },
+      {
+       "code": "RV-10",
+       "k": false,
+       "title": "Penelusuran tambahan, deduplikasi, dan alat bantu dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "<em>Snowballing</em>, literatur kelabu, deduplikasi beserta jumlahnya, serta alat bantu (Rayyan, Covidence, VOSviewer, AI) beserta versi dan perannya."
+       ]
+      },
+      {
+       "code": "RV-11",
+       "k": true,
+       "title": "Diagram alur seleksi lengkap",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah identifikasi, duplikat, penyaringan, eksklusi beralasan, dan studi akhir; alasan eksklusi teks lengkap disebut beserta jumlahnya."
+       ]
+      },
+      {
+       "code": "RV-12",
+       "k": true,
+       "title": "Jumlah studi akhir konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah sama di abstrak, diagram, tabel karakteristik, dan teks."
+       ]
+      },
+      {
+       "code": "RV-13",
+       "k": true,
+       "title": "Tabel karakteristik studi memuat semua studi yang disintesis",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Penulis, tahun, negara, desain, sampel, dan temuan utama tersaji dengan kolom yang sama untuk semua studi."
+       ]
+      },
+      {
+       "code": "RV-14",
+       "k": true,
+       "title": "Hasil penilaian kualitas disajikan per studi dan memengaruhi sintesis",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Hasil per studi ditampilkan dan dipakai dalam sintesis (misalnya analisis sensitivitas atau pembobotan)."
+       ]
+      },
+      {
+       "code": "RV-15",
+       "k": true,
+       "title": "Setiap pertanyaan kajian dijawab dalam subbagian atau tema yang jelas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Struktur hasil mengikuti pertanyaan kajian."
+       ]
+      },
+      {
+       "code": "RV-16",
+       "k": true,
+       "title": "Sintesis menghubungkan studi, bukan ringkasan satu studi per paragraf",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pola, kontradiksi, dan kondisi antarstudi diuraikan; distribusi studi diinterpretasi."
+       ]
+      },
+      {
+       "code": "RV-17",
+       "k": true,
+       "title": "Klaim sintesis menyebut jumlah studi pendukung dan merujuknya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya “12 dari 38 studi” disertai sitasi."
+       ]
+      },
+      {
+       "code": "RV-18",
+       "k": false,
+       "title": "Kekuatan atau kepastian bukti dinilai",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Konsistensi, jumlah, dan kualitas studi dipertimbangkan; tidak semua temuan diperlakukan setara."
+       ]
+      },
+      {
+       "code": "RV-19",
+       "k": true,
+       "title": "Kajian terdahulu dibandingkan pada dimensi yang sama",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Cakupan, periode, metode, dan temuan kajian sebelumnya dibandingkan, idealnya dalam tabel pembanding."
+       ]
+      },
+      {
+       "code": "RV-20",
+       "k": true,
+       "title": "Setiap studi yang disertakan tercantum di daftar pustaka atau lampiran",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Daftar studi inklusi lengkap dan dapat ditelusuri."
+       ]
+      },
+      {
+       "code": "RV-21",
+       "k": true,
+       "title": "Keterbatasan metode kajian diakui",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Bias bahasa, basis data, publikasi, kualitas studi, dan subjektivitas pengodean dibahas."
+       ]
+      }
+     ],
+     "plain": "Modul R. Kajian Pustaka Sistematis (semua subtipe sistematis)",
+     "mod": "R"
+    },
+    {
+     "title": "Modul R-SLR. <em>Systematic Literature Review</em> dan <em>Systematic Mapping</em>",
+     "module": true,
+     "items": [
+      {
+       "code": "SLR-01",
+       "k": true,
+       "title": "Daftar periksa PRISMA 2020 terlampir atau butirnya dapat ditelusuri",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Lokasi setiap butir PRISMA dapat ditunjukkan."
+       ]
+      },
+      {
+       "code": "SLR-02",
+       "k": false,
+       "title": "Peta pada <em>systematic mapping</em> memuat jumlah studi per sel",
+       "b": "<em>systematic mapping</em>",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kategori klasifikasi dan peta (<em>bubble plot</em>) memuat jumlah studi."
+       ]
+      }
+     ],
+     "plain": "Modul R-SLR. Systematic Literature Review dan Systematic Mapping",
+     "mod": "R-SLR"
+    },
+    {
+     "title": "Modul R-SC. <em>Scoping Review</em>",
+     "module": true,
+     "items": [
+      {
+       "code": "SC-01",
+       "k": true,
+       "title": "PRISMA-ScR dan kerangka Arksey dan O’Malley atau JBI diikuti",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tahapan kerangka disebut dan dijalankan."
+       ]
+      },
+      {
+       "code": "SC-02",
+       "k": true,
+       "title": "Pertanyaan menggunakan kerangka PCC",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Populasi, konsep, dan konteks dinyatakan."
+       ]
+      },
+      {
+       "code": "SC-03",
+       "k": true,
+       "title": "Hasil dipetakan dan tidak ditarik ke simpulan efektivitas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pemetaan (<em>charting</em>) memakai tabel standar."
+       ]
+      },
+      {
+       "code": "SC-04",
+       "k": false,
+       "title": "Alasan tidak melakukan penilaian kualitas dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Konsultasi pemangku kepentingan dilaporkan bila dilakukan."
+       ]
+      }
+     ],
+     "plain": "Modul R-SC. Scoping Review",
+     "mod": "R-SC"
+    },
+    {
+     "title": "Modul R-BIB. Bibliometrik",
+     "module": true,
+     "items": [
+      {
+       "code": "BIB-01",
+       "k": true,
+       "title": "Basis data, <em>string</em>, filter, tanggal ekspor, dan jumlah record dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah record sebelum dan sesudah pembersihan disebutkan."
+       ]
+      },
+      {
+       "code": "BIB-02",
+       "k": true,
+       "title": "Perangkat lunak, versi, ambang, dan normalisasi disebutkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya VOSviewer, Bibliometrix, atau CiteSpace."
+       ]
+      },
+      {
+       "code": "BIB-03",
+       "k": true,
+       "title": "Indikator bibliometrik diinterpretasi secara substantif",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Produktivitas, sitasi, kolaborasi, dan kookurensi dimaknai, bukan hanya dideskripsikan."
+       ]
+      },
+      {
+       "code": "BIB-04",
+       "k": true,
+       "title": "Peta bibliometrik berlabel lengkap",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Legenda warna, ukuran simpul, dan ambang dicantumkan."
+       ]
+      },
+      {
+       "code": "BIB-05",
+       "k": false,
+       "title": "Keterbatasan data satu basis data dan efek ambang diakui",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Dampaknya pada temuan dibahas."
+       ]
+      }
+     ],
+     "plain": "Modul R-BIB. Bibliometrik",
+     "mod": "R-BIB"
+    },
+    {
+     "title": "Modul R-MA. Meta-Analisis",
+     "module": true,
+     "items": [
+      {
+       "code": "MA-01",
+       "k": true,
+       "title": "Ukuran efek, model, dan estimator ditentukan serta dibenarkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Model <em>fixed</em> atau <em>random effects</em> beserta alasannya."
+       ]
+      },
+      {
+       "code": "MA-02",
+       "k": true,
+       "title": "Heterogenitas dilaporkan dan dieksplorasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "I², τ², atau Q dilaporkan; moderator, subgrup, atau meta-regresi dijelaskan."
+       ]
+      },
+      {
+       "code": "MA-03",
+       "k": true,
+       "title": "Bias publikasi diuji",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "<em>Funnel plot</em>, uji Egger, <em>trim-and-fill</em>, atau <em>fail-safe N</em>, atau keterbatasannya dinyatakan."
+       ]
+      },
+      {
+       "code": "MA-04",
+       "k": true,
+       "title": "Analisis sensitivitas dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya <em>leave-one-out</em> atau tanpa studi berkualitas rendah."
+       ]
+      },
+      {
+       "code": "MA-05",
+       "k": false,
+       "title": "Dependensi ukuran efek ditangani",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Beberapa efek dari satu studi ditangani dengan metode yang sesuai."
+       ]
+      },
+      {
+       "code": "MA-06",
+       "k": false,
+       "title": "<em>Forest</em><em> plot</em> atau <em>funnel plot</em> berlabel lengkap",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Label efek, interval kepercayaan, bobot, dan ukuran heterogenitas tersedia."
+       ]
+      }
+     ],
+     "plain": "Modul R-MA. Meta-Analisis",
+     "mod": "R-MA"
+    },
+    {
+     "title": "Modul R-NR. Kajian Naratif dan <em>Survey Paper</em>",
+     "module": true,
+     "items": [
+      {
+       "code": "NR-01",
+       "k": true,
+       "title": "Kerangka organisasi kajian dinyatakan dan konsisten",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Taksonomi, kronologi, atau tema dipakai secara konsisten."
+       ]
+      },
+      {
+       "code": "NR-02",
+       "k": true,
+       "title": "Studi dibandingkan pada dimensi yang sama",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Perbandingan disajikan, misalnya dalam tabel pembanding, bukan uraian terpisah satu per satu."
+       ]
+      },
+      {
+       "code": "NR-03",
+       "k": false,
+       "title": "Bias seleksi literatur diakui",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Dampak cara pemilihan sumber terhadap simpulan dibahas."
+       ]
+      },
+      {
+       "code": "NR-04",
+       "k": false,
+       "title": "Tantangan terbuka dan agenda riset diturunkan dari hasil sintesis",
+       "b": "naskah merupakan <em>survey paper</em> atau memuat agenda riset",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap tantangan atau arah riset ditautkan ke celah yang ditemukan dalam sintesis, bukan daftar umum."
+       ]
+      }
+     ],
+     "plain": "Modul R-NR. Kajian Naratif dan Survey Paper",
+     "mod": "R-NR"
+    },
+    {
+     "title": "Modul K. Artikel Konseptual atau Teoretis",
+     "module": true,
+     "items": [
+      {
+       "code": "KN-01",
+       "k": true,
+       "title": "Tesis atau klaim utama dinyatakan dan dipertahankan di seluruh naskah",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Klaim utama dapat dikutip dan setiap bagian berkontribusi padanya."
+       ]
+      },
+      {
+       "code": "KN-02",
+       "k": true,
+       "title": "Konsep kunci didefinisikan dengan rujukan primer",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Definisi dan batas istilah dijelaskan."
+       ]
+      },
+      {
+       "code": "KN-03",
+       "k": true,
+       "title": "Argumen tersusun bertahap dan setiap langkah didukung sumber atau penalaran eksplisit",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak ada lompatan logika yang tidak dijelaskan."
+       ]
+      },
+      {
+       "code": "KN-04",
+       "k": false,
+       "title": "Pandangan tandingan atau keberatan dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sekurang-kurangnya satu posisi berbeda ditanggapi."
+       ]
+      },
+      {
+       "code": "KN-05",
+       "k": true,
+       "title": "Kontribusi teoretis dan batas berlakunya dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kondisi atau konteks berlakunya argumen disebut."
+       ]
+      }
+     ],
+     "plain": "Modul K. Artikel Konseptual atau Teoretis",
+     "mod": "K"
+    }
+   ]
+  }
+ ],
+ "signRole": "Editor",
+ "short": "Pra-terima",
+ "version": "2.3"
+}

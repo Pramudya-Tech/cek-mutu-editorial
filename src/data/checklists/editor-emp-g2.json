@@ -1,0 +1,1062 @@
+{
+ "id": "editor-emp-g2",
+ "role": "Editor",
+ "var": "emp",
+ "varName": "Empiris & Technical Paper",
+ "gate": 2,
+ "title": "Pre-Acceptance Editorial Check",
+ "sub": "Scientific Review and Editorial Evaluation",
+ "stage": "Tahap OJS: <em>Review</em> → <em>Copyediting</em> (sebelum naskah dinyatakan diterima)   |   Penanggung jawab: Editor Penanggung Jawab Naskah (<em>Handling Editor</em>) / Editor Kepala (<em>Editor in Chief</em>), dengan mempertimbangkan laporan <em>reviewer</em>",
+ "intro": [],
+ "fields": [
+  {
+   "label": "Nama jurnal",
+   "html": "Nama jurnal",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "ID naskah (Manuscript ID)",
+   "html": "ID naskah (<em>Manuscript ID</em>)",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Judul artikel",
+   "html": "Judul artikel",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Nama editor/pemeriksa",
+   "html": "Nama editor/pemeriksa",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Tanggal pemeriksaan",
+   "html": "Tanggal pemeriksaan",
+   "wide": false,
+   "type": "date",
+   "ph": ""
+  },
+  {
+   "label": "Gaya sitasi (citation style)",
+   "html": "Gaya sitasi (<em>citation style</em>)",
+   "wide": true,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "APA 7",
+     "other": false
+    },
+    {
+     "t": "IEEE",
+     "other": false
+    },
+    {
+     "t": "Lainnya sesuai kebijakan",
+     "other": true
+    }
+   ],
+   "multi": false
+  },
+  {
+   "label": "Putaran telaah",
+   "html": "Putaran telaah",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jumlah laporan reviewer",
+   "html": "Jumlah laporan <em>reviewer</em>",
+   "wide": false,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Versi berkas yang diperiksa",
+   "html": "Versi berkas yang diperiksa",
+   "wide": true,
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "label": "Jenis artikel dan modul",
+   "html": "Jenis artikel dan modul",
+   "wide": true,
+   "type": "choice",
+   "opts": [
+    {
+     "t": "Kuantitatif",
+     "other": false
+    },
+    {
+     "t": "SEM",
+     "other": false
+    },
+    {
+     "t": "EKS",
+     "other": false
+    },
+    {
+     "t": "KOMP",
+     "other": false
+    },
+    {
+     "t": "Kualitatif (QL)",
+     "other": false
+    },
+    {
+     "t": "Metode campuran (MM)",
+     "other": false
+    },
+    {
+     "t": "R&D/DBR (RD)",
+     "other": false
+    },
+    {
+     "t": "Technical paper (TEK)",
+     "other": false
+    }
+   ],
+   "multi": true
+  }
+ ],
+ "tables": [
+  {
+   "title": "Tabel 2A. Indikator Inti (berlaku untuk semua jenis artikel)",
+   "notes": [],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "A. Proses Telaah Sejawat (<em>Peer Review</em>)",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-01",
+       "k": true,
+       "title": "<em>Reviewer</em> memiliki keahlian yang sesuai dan bebas dari konflik kepentingan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Bidang keahlian <em>reviewer</em> sesuai dengan topik atau metode naskah; konflik kepentingan tidak ada atau telah dikelola dan dicatat."
+       ]
+      },
+      {
+       "code": "G2-02",
+       "k": true,
+       "title": "Laporan <em>reviewer</em> mencukupi dari segi jumlah dan substansi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah laporan sesuai dengan kebijakan jurnal; setiap laporan memuat alasan yang spesifik; laporan yang bias atau tidak profesional ditandai."
+       ]
+      },
+      {
+       "code": "G2-21",
+       "k": false,
+       "title": "Perbedaan rekomendasi antar-<em>reviewer</em> dipertimbangkan secara eksplisit",
+       "b": "rekomendasi <em>reviewer</em> berbeda",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Catatan editor menjelaskan rekomendasi yang diikuti beserta alasannya; <em>reviewer</em> tambahan diundang apabila perbedaan menyangkut validitas."
+       ]
+      }
+     ],
+     "plain": "A. Proses Telaah Sejawat (Peer Review)",
+     "mod": null
+    },
+    {
+     "title": "B. Judul dan Abstrak",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-22",
+       "k": true,
+       "title": "Judul dan abstrak konsisten dengan temuan dan simpulan versi terbaru",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Seluruh temuan, angka, dan klaim dalam judul dan abstrak sesuai dengan hasil serta simpulan naskah revisi terbaru. Judul dirumuskan secara spesifik untuk mencerminkan fokus atau kontribusi penelitian dan tidak menggunakan kata generik seperti “Pengembangan” atau “Analisis”. Nama lokasi penelitian tidak dicantumkan dalam judul, sedangkan populasi dapat disebutkan apabila relevan dengan fokus penelitian. Panjang judul maksimal 18 kata dan diutamakan tidak melebihi dua baris pada templat jurnal."
+       ]
+      },
+      {
+       "code": "G2-27",
+       "k": true,
+       "title": "Label jenis artikel dan nama desain konsisten pada judul, abstrak, dan metode",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jenis artikel (misalnya <em>original research</em> atau <em>technical paper</em>) dan nama desain (misalnya survei potong lintang, kuasi-eksperimen, studi kasus, atau pengembangan prototipe) sama pada judul, abstrak, dan metode, serta sesuai dengan metode yang benar-benar dipakai."
+       ]
+      }
+     ],
+     "plain": "B. Judul dan Abstrak",
+     "mod": null
+    },
+    {
+     "title": "C. Pendahuluan dan Kajian Pustaka",
+     "module": false,
+     "items": [
+      {
+       "code": "G1-08",
+       "k": false,
+       "title": "Fenomena, state of the art, dan kesenjangan penelitian membangun dasar kajian yang memadai",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Fenomena global dan nasional disajikan pada awal pendahuluan secara relevan dengan fokus penelitian serta didukung data atau referensi yang dapat dipertanggungjawabkan. State of the art memetakan temuan dan pendekatan penelitian terdahulu sehingga menunjukkan perkembangan pengetahuan dalam bidang tersebut. Kesenjangan penelitian diturunkan secara jelas dari keterbatasan, inkonsistensi temuan, atau persoalan yang belum terjawab dalam literatur yang ditinjau."
+       ]
+      },
+      {
+       "code": "G2-03",
+       "k": true,
+       "title": "Masalah dan tujuan kajian konsisten dengan rasionalnya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pentingnya masalah dinyatakan dan tujuan kajian menjawab masalah tersebut."
+       ]
+      },
+      {
+       "code": "G2-04",
+       "k": true,
+       "title": "Landasan teori, konsep, atau literatur sesuai dengan tujuan kajian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Literatur utama disintesis dan dikritisi, bukan sekadar didaftar; konstruk atau konsep utama didefinisikan; pada studi deduktif, hipotesis diturunkan dari teori beserta arah hubungannya."
+       ]
+      },
+      {
+       "code": "G2-33",
+       "k": true,
+       "title": "Kerangka teori atau konseptual dipakai konsisten sampai analisis dan pembahasan",
+       "b": "naskah menggunakan kerangka teori atau konseptual",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap konstruk atau konsep dalam kerangka memiliki pengukuran, kode, atau kategori sintesis yang sesuai, dan kerangka dipakai kembali dalam pembahasan; model digambarkan apabila melibatkan banyak variabel atau jalur."
+       ]
+      },
+      {
+       "code": "G2-05",
+       "k": true,
+       "title": "Literatur digunakan secara tepat untuk mendukung klaim",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Klaim kunci disertai sitasi; sekurang-kurangnya tiga sitasi acak diperiksa ke sumber aslinya dan benar-benar mendukung klaim; sumber primer dikutip untuk klaim penting; rujukan metodologis kunci (instrumen, teori, teknik analisis, pedoman) tercantum; sumber beragam dan tidak bertumpu pada satu kelompok penulis. Usia referensi bukan satu-satunya dasar penilaian."
+       ]
+      },
+      {
+       "code": "G2-06",
+       "k": true,
+       "title": "Klaim kontribusi didukung oleh literatur dan temuan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kontribusi dinyatakan secara spesifik, dibedakan dari studi sebelumnya, tidak melampaui hasil, dan dinilai sesuai dengan jenis penelitian (studi replikasi, pengembangan, atau konteks lokal dapat berkontribusi)."
+       ]
+      }
+     ],
+     "plain": "C. Pendahuluan dan Kajian Pustaka",
+     "mod": null
+    },
+    {
+     "title": "D. Metode Penelitian atau Rancangan Teknis",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-07",
+       "k": true,
+       "title": "Desain atau pendekatan sesuai dengan pertanyaan kajian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Rasional desain dinyatakan; jenis klaim (kausal, deskriptif, atau interpretif) sesuai dengan kemampuan desain. Pada <em>technical paper</em>, rancangan evaluasi (misalnya eksperimen pembanding, uji beban, atau studi pengguna) mampu menunjukkan kinerja yang diklaim."
+       ]
+      },
+      {
+       "code": "G2-08",
+       "k": true,
+       "title": "Sumber data, partisipan, atau <em>dataset</em> dan prosedur pengumpulannya dilaporkan secara transparan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sesuai dengan desainnya, naskah melaporkan teknik pengambilan sampel (<em>sampling</em>), latar, lokasi, waktu pengumpulan data, mode dan pihak pengumpul data, serta kriteria inklusi. Penelitian kualitatif melaporkan proses rekrutmen. <em>Technical paper</em> melaporkan asal <em>dataset</em> atau beban uji, ukurannya, prapemrosesan, dan lingkungan pengujian."
+       ]
+      },
+      {
+       "code": "G2-09",
+       "k": true,
+       "title": "Prosedur analisis atau evaluasi dilaporkan dan sesuai dengan jenis data",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Teknik, perangkat lunak beserta versi, dan langkah analisis disebutkan; uji asumsi dilaporkan apabila menggunakan statistik inferensial. <em>Technical paper</em> melaporkan metrik evaluasi, jumlah pengulangan (<em>run</em>), dan pembanding (<em>baseline</em>)."
+       ]
+      },
+      {
+       "code": "G2-10",
+       "k": true,
+       "title": "Kualitas pengukuran atau validitas pengujian ditunjukkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Penelitian kuantitatif melaporkan reliabilitas dan validitas pada sampel studi ini, bukan hanya dikutip dari studi asal. Penelitian kualitatif melaporkan pemeriksaan keabsahan data. <em>Technical paper</em> menunjukkan validitas pengujian, misalnya pembagian data yang mencegah kebocoran (<em>data leakage</em>) atau pengujian pada kondisi yang representatif. Rincian per desain tercantum pada Tabel 2B."
+       ]
+      },
+      {
+       "code": "G2-32",
+       "k": true,
+       "title": "Penggunaan AI generatif sebagai alat penelitian dilaporkan",
+       "b": "AI dipakai sebagai alat penelitian (bukan hanya bantuan penulisan)",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Apabila AI dipakai untuk pengodean, penilaian, ekstraksi, atau intervensi, naskah melaporkan nama alat, versi, <em>prompt</em> atau pengaturan, peran, dan validasi oleh manusia."
+       ]
+      },
+      {
+       "code": "G2-16",
+       "k": true,
+       "title": "Aspek etika penelitian yang substantif terpenuhi",
+       "b": "penelitian melibatkan manusia, hewan, atau data pribadi",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Prosedur <em>informed consent</em>, perlindungan data, dan perlakuan terhadap kelompok rentan konsisten dengan persetujuan etik (G1-17); risiko etik yang diangkat <em>reviewer</em> telah dijawab."
+       ]
+      }
+     ],
+     "plain": "D. Metode Penelitian atau Rancangan Teknis",
+     "mod": null
+    },
+    {
+     "title": "E. Hasil Penelitian atau Hasil Evaluasi",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-12",
+       "k": true,
+       "title": "Hasil dapat ditelusuri ke bukti dan konsisten antarbagian",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Angka yang merujuk pada temuan yang sama dalam abstrak, teks, tabel, dan gambar konsisten. Pemaparan hasil kuantitatif menyebutkan angka kunci dan merujuk tabel atau gambar yang sesuai. Tema dalam penelitian kualitatif didukung oleh kutipan data, sedangkan hasil evaluasi teknis dapat ditelusuri ke bukti pengujian. Bagian Hasil tidak memuat sitasi referensi pustaka. Perbandingan temuan dengan teori atau penelitian terdahulu ditempatkan pada bagian Pembahasan."
+       ]
+      },
+      {
+       "code": "G2-23",
+       "k": true,
+       "title": "Pelaporan statistik lengkap",
+       "b": "analisis statistik inferensial",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Nilai statistik uji, derajat kebebasan, nilai p eksak, ukuran efek (<em>effect size</em>), dan interval kepercayaan (<em>confidence interval</em>) dilaporkan apabila relevan; perangkat lunak disebutkan."
+       ]
+      },
+      {
+       "code": "G2-24",
+       "k": false,
+       "title": "Tabel dan gambar mendukung temuan dan tidak duplikatif",
+       "b": "naskah memuat tabel atau gambar",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap tabel dan gambar menyajikan data yang relevan dan dibahas dalam naskah. Data yang sama tidak disajikan sekaligus dalam tabel dan gambar, maupun diulang pada beberapa tabel atau gambar. Apabila ditemukan penyajian ganda, hanya satu bentuk yang dipertahankan, dipilih berdasarkan kesesuaiannya dengan tujuan penyajian, karakteristik data, dan kejelasan penyampaian temuan. Judul, keterangan, dan catatan memungkinkan tabel atau gambar dipahami secara mandiri."
+       ]
+      }
+     ],
+     "plain": "E. Hasil Penelitian atau Hasil Evaluasi",
+     "mod": null
+    },
+    {
+     "title": "F. Pembahasan",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-13",
+       "k": true,
+       "title": "Pembahasan menafsirkan temuan dan membandingkannya dengan literatur",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Temuan utama ditafsirkan terhadap pertanyaan kajian dan kerangka teori; setiap temuan utama dibandingkan dengan studi sebelumnya, termasuk yang bertentangan, beserta penjelasan penyebab persamaan atau perbedaannya; implikasi teoretis dan praktis spesifik dan diturunkan dari temuan."
+       ]
+      },
+      {
+       "code": "G2-31",
+       "k": false,
+       "title": "Penjelasan alternatif atas temuan dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pembahasan menimbang sekurang-kurangnya satu penjelasan alternatif atau faktor pengganggu yang relevan terhadap temuan utama."
+       ]
+      },
+      {
+       "code": "G2-30",
+       "k": true,
+       "title": "Pembahasan dan simpulan tidak memuat hasil atau data baru",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Semua angka, temuan, dan sitasi studi yang disintesis pada pembahasan dan simpulan telah muncul di bagian hasil."
+       ]
+      },
+      {
+       "code": "G2-11",
+       "k": true,
+       "title": "Keterbatasan dan potensi bias diakui dan dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Keterbatasan spesifik terhadap sampel, desain, instrumen, dan konteks studi ini (bukan daftar umum), termasuk yang diangkat <em>reviewer</em>, dibahas beserta dampaknya; arah riset lanjutan, apabila disebut, diturunkan dari keterbatasan atau temuan."
+       ]
+      }
+     ],
+     "plain": "F. Pembahasan",
+     "mod": null
+    },
+    {
+     "title": "G. Simpulan dan Kekuatan Klaim",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-14",
+       "k": true,
+       "title": "Simpulan tidak melampaui bukti",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Simpulan disajikan dalam satu hingga dua paragraf dan menjawab tujuan atau pertanyaan penelitian. Isinya menyintesis temuan serta memberikan pemaknaan atau pandangan penulis mengenai arti dan kontribusi hasil penelitian, tanpa sekadar mengulang uraian hasil. Setiap klaim dapat ditelusuri ke temuan, sedangkan implikasi dan rekomendasi sebanding dengan kekuatan bukti yang tersedia. Bagian akhir simpulan memuat keterbatasan utama penelitian dan saran riset selanjutnya yang secara spesifik berkaitan dengan keterbatasan tersebut."
+       ]
+      },
+      {
+       "code": "G2-28",
+       "k": true,
+       "title": "Bahasa kausal hanya digunakan apabila desain mendukung",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kata seperti “pengaruh”, “dampak”, atau “menyebabkan” pada judul, hasil, pembahasan, dan simpulan hanya dipakai untuk desain yang mendukung inferensi kausal; desain korelasional memakai bahasa asosiasi; tidak ada generalisasi dari sampel kecil atau satu konteks."
+       ]
+      }
+     ],
+     "plain": "G. Simpulan dan Kekuatan Klaim",
+     "mod": null
+    },
+    {
+     "title": "H. Pelaporan dan Ketersediaan Data",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-15",
+       "k": false,
+       "title": "Pedoman pelaporan yang sesuai dengan desain dipenuhi",
+       "b": "jurnal mewajibkan daftar periksa pelaporan",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Butir wajib dalam daftar periksa pelaporan yang sesuai dengan desain (misalnya JARS terkait, CONSORT, SRQR, atau COREQ; pada <em>technical paper</em>, ketentuan jurnal atau penerbit) dilaporkan atau ketiadaannya dijelaskan."
+       ]
+      },
+      {
+       "code": "G2-25",
+       "k": true,
+       "title": "Data, kode, atau materi tersedia sesuai dengan pernyataan ketersediaan data",
+       "b": "jurnal mewajibkan pernyataan ketersediaan data atau naskah menyatakan data tersedia",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tautan repositori atau prosedur akses berfungsi, atau alasan pembatasan akses dinyatakan."
+       ]
+      }
+     ],
+     "plain": "H. Pelaporan dan Ketersediaan Data",
+     "mod": null
+    },
+    {
+     "title": "I. Revisi, Integritas, dan Dokumentasi Keputusan",
+     "module": false,
+     "items": [
+      {
+       "code": "G2-17",
+       "k": true,
+       "title": "Penulis menanggapi setiap komentar <em>reviewer</em>",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Setiap komentar dijawab, baik dengan melaksanakan perubahan disertai lokasinya maupun dengan menolaknya disertai alasan."
+       ]
+      },
+      {
+       "code": "G2-18",
+       "k": true,
+       "title": "Revisi yang dijanjikan benar-benar terdapat dalam naskah",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Perubahan utama ditemukan pada lokasi yang disebutkan dalam surat tanggapan (<em>response letter</em>)."
+       ]
+      },
+      {
+       "code": "G2-26",
+       "k": true,
+       "title": "Perubahan kepenulisan selama proses telaah disetujui oleh semua penulis",
+       "b": "terdapat permintaan perubahan penulis",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Permintaan penambahan, penghapusan, atau perubahan urutan penulis disertai alasan dan persetujuan tertulis dari semua penulis."
+       ]
+      },
+      {
+       "code": "G2-19",
+       "k": true,
+       "title": "Isu integritas yang ditandai telah diselesaikan",
+       "b": "terdapat isu integritas yang ditandai",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Isu ditutup dengan dokumentasi langkah yang ditempuh (pedoman COPE atau yang setara)."
+       ]
+      },
+      {
+       "code": "G2-20",
+       "k": true,
+       "title": "Dasar keputusan dan versi naskah yang diterima terdokumentasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Alasan keputusan merujuk pada temuan <em>reviewer</em> atau editor; versi yang diterima teridentifikasi melalui nama berkas dan tanggal."
+       ]
+      }
+     ],
+     "plain": "I. Revisi, Integritas, dan Dokumentasi Keputusan",
+     "mod": null
+    }
+   ]
+  },
+  {
+   "title": "Tabel 2B. Modul Kecukupan per Desain (kerjakan modul yang sesuai)",
+   "notes": [
+    "Pilih dan isi hanya butir checklist yang sesuai dengan metode penelitian atau jenis artikel yang dinilai."
+   ],
+   "cols": [
+    "No.",
+    "Indikator Pemeriksaan",
+    "Temuan",
+    "Bukti",
+    "Lokasi",
+    "Tindak Lanjut"
+   ],
+   "groups": [
+    {
+     "title": "Modul E. Artikel Empiris (semua subtipe)",
+     "module": true,
+     "items": [
+      {
+       "code": "E-01",
+       "k": true,
+       "title": "Ukuran sampel atau kecukupan data dijustifikasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kuantitatif: analisis daya, aturan ukuran sampel, atau estimasi presisi. Kualitatif: alasan jumlah partisipan atau saturasi. Bukan sekadar dilaporkan."
+       ]
+      },
+      {
+       "code": "E-02",
+       "k": true,
+       "title": "Instrumen atau protokol dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Sumber, jumlah butir, skala, bahasa dan prosedur terjemahan, panduan wawancara, dan uji coba awal disebutkan sesuai desain."
+       ]
+      },
+      {
+       "code": "E-03",
+       "k": false,
+       "title": "Data hilang, pencilan, dan eksklusi data ditangani serta dilaporkan",
+       "b": "analisis kuantitatif",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah dan cara penanganan data hilang, pencilan, serta responden yang dikeluarkan dijelaskan; koreksi uji berganda dilaporkan bila relevan."
+       ]
+      },
+      {
+       "code": "E-04",
+       "k": true,
+       "title": "Profil data akhir dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah yang dianalisis, tingkat respons atau atrisi, serta statistik deskriptif atau gambaran partisipan dilaporkan."
+       ]
+      },
+      {
+       "code": "E-05",
+       "k": true,
+       "title": "Setiap pertanyaan penelitian atau hipotesis dijawab dalam hasil",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Hasil disusun mengikuti urutan pertanyaan atau hipotesis dan tidak ada yang terlewat."
+       ]
+      },
+      {
+       "code": "E-06",
+       "k": true,
+       "title": "Hipotesis yang tidak didukung dan temuan tak terduga dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tidak terdapat indikasi pelaporan selektif; analisis eksploratori dibedakan dari analisis yang direncanakan."
+       ]
+      },
+      {
+       "code": "E-07",
+       "k": false,
+       "title": "Hasil dipisahkan dari tafsiran",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tafsiran panjang ditempatkan pada pembahasan, kecuali pendekatan kualitatif yang sah menggabungkan hasil dan pembahasan."
+       ]
+      }
+     ],
+     "plain": "Modul E. Artikel Empiris (semua subtipe)",
+     "mod": "E"
+    },
+    {
+     "title": "Modul E-SEM. Kuantitatif: Survei dan SEM",
+     "module": true,
+     "items": [
+      {
+       "code": "SEM-01",
+       "k": true,
+       "title": "Reliabilitas konstruk dilaporkan dengan ambang yang dirujuk",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Cronbach alpha atau <em>composite reliability</em> dilaporkan beserta rujukan ambangnya."
+       ]
+      },
+      {
+       "code": "SEM-02",
+       "k": true,
+       "title": "Validitas konvergen dan diskriminan dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "CFA, AVE, HTMT, atau Fornell–Larcker dilaporkan sesuai pendekatan."
+       ]
+      },
+      {
+       "code": "SEM-03",
+       "k": true,
+       "title": "Spesifikasi model, estimator, dan perangkat lunak beserta versi dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Model yang diuji, metode estimasi, perangkat lunak, dan versinya disebutkan."
+       ]
+      },
+      {
+       "code": "SEM-04",
+       "k": true,
+       "title": "Model struktural dilaporkan lengkap",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Koefisien jalur, nilai p atau interval kepercayaan, R², dan f²; untuk CB-SEM juga indeks kecocokan global."
+       ]
+      },
+      {
+       "code": "SEM-05",
+       "k": false,
+       "title": "Bias metode umum (<em>common method bias</em>) dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Uji statistik atau penanganan prosedural dilaporkan."
+       ]
+      }
+     ],
+     "plain": "Modul E-SEM. Kuantitatif: Survei dan SEM",
+     "mod": "E-SEM"
+    },
+    {
+     "title": "Modul E-EKS. Kuantitatif: Eksperimen dan Kuasi-Eksperimen",
+     "module": true,
+     "items": [
+      {
+       "code": "EKS-01",
+       "k": true,
+       "title": "Cara alokasi ke kelompok dijelaskan beserta alasannya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Randomisasi, pencocokan, atau kelompok utuh dijelaskan, termasuk unit alokasi."
+       ]
+      },
+      {
+       "code": "EKS-02",
+       "k": true,
+       "title": "Kelompok pembanding tersedia atau keterbatasan desain satu kelompok dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kelompok kontrol atau pembanding dijelaskan; desain satu kelompok disertai pernyataan keterbatasannya."
+       ]
+      },
+      {
+       "code": "EKS-03",
+       "k": true,
+       "title": "Perlakuan dijelaskan secara rinci",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Isi, durasi, materi, pelaksana, dan fidelitas pelaksanaan dilaporkan."
+       ]
+      },
+      {
+       "code": "EKS-04",
+       "k": false,
+       "title": "Kesetaraan awal kelompok diperiksa",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Data <em>pretest</em> atau <em>baseline</em> dibandingkan dan dilaporkan."
+       ]
+      },
+      {
+       "code": "EKS-05",
+       "k": false,
+       "title": "Penyamaran (<em>masking</em>) dilaporkan",
+       "b": "desain memungkinkan penyamaran",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Dinyatakan apakah partisipan, pelaksana, dan penilai mengetahui kelompok."
+       ]
+      },
+      {
+       "code": "EKS-06",
+       "k": false,
+       "title": "Ancaman validitas internal dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Atrisi, kontaminasi, dan efek pengamat dibahas."
+       ]
+      }
+     ],
+     "plain": "Modul E-EKS. Kuantitatif: Eksperimen dan Kuasi-Eksperimen",
+     "mod": "E-EKS"
+    },
+    {
+     "title": "Modul E-KOMP. Kuantitatif: Data Log, Komputasi/ML, dan Penilaian Pakar",
+     "module": true,
+     "items": [
+      {
+       "code": "KOMP-01",
+       "k": true,
+       "title": "Sumber data, periode, unit analisis, dan prapemrosesan dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Asal data, rentang waktu, unit, dan langkah prapemrosesan dilaporkan."
+       ]
+      },
+      {
+       "code": "KOMP-02",
+       "k": true,
+       "title": "Pembagian data dan metrik evaluasi model dilaporkan",
+       "b": "model prediktif atau ML",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Data latih dan uji atau validasi silang serta metrik evaluasi dilaporkan."
+       ]
+      },
+      {
+       "code": "KOMP-03",
+       "k": true,
+       "title": "Prosedur penilaian pakar dilaporkan",
+       "b": "AHP, Delphi, atau keputusan kelompok",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Jumlah dan kualifikasi pakar, jumlah ronde, serta indeks konsistensi atau kesepakatan dilaporkan."
+       ]
+      },
+      {
+       "code": "KOMP-04",
+       "k": false,
+       "title": "Bias atau keadilan model diperiksa",
+       "b": "model diterapkan pada manusia",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pemeriksaan bias dilaporkan apabila model diterapkan pada manusia."
+       ]
+      }
+     ],
+     "plain": "Modul E-KOMP. Kuantitatif: Data Log, Komputasi/ML, dan Penilaian Pakar",
+     "mod": "E-KOMP"
+    },
+    {
+     "title": "Modul E-QL. Kualitatif",
+     "module": true,
+     "items": [
+      {
+       "code": "QL-01",
+       "k": true,
+       "title": "Pendekatan kualitatif dinamai dengan rujukan metodologis",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya analisis tematik, analisis isi, <em>grounded theory</em>, studi kasus, atau fenomenologi."
+       ]
+      },
+      {
+       "code": "QL-02",
+       "k": true,
+       "title": "Prosedur pengodean dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pengode, tahapan, unit analisis, perangkat lunak, dan asal kategori (a priori atau emergen) dijelaskan."
+       ]
+      },
+      {
+       "code": "QL-03",
+       "k": true,
+       "title": "Tema dapat ditelusuri ke kode dan data",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tema didukung kutipan atau data yang disertai konteksnya."
+       ]
+      },
+      {
+       "code": "QL-04",
+       "k": false,
+       "title": "Posisi peneliti dan hubungan peneliti–partisipan dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Latar belakang peneliti, cara mengelola prasangka, dan hubungan dengan partisipan dijelaskan."
+       ]
+      }
+     ],
+     "plain": "Modul E-QL. Kualitatif",
+     "mod": "E-QL"
+    },
+    {
+     "title": "Modul E-MM. Metode Campuran (<em>Mixed Methods</em>)",
+     "module": true,
+     "items": [
+      {
+       "code": "MM-01",
+       "k": true,
+       "title": "Desain metode campuran dinamai beserta rujukan dan alasannya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya <em>convergent</em>, <em>explanatory sequential</em>, atau <em>exploratory sequential</em>."
+       ]
+      },
+      {
+       "code": "MM-02",
+       "k": true,
+       "title": "Urutan, prioritas, dan hubungan sampel antarkomponen dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Hubungan antara data kuantitatif dan kualitatif diuraikan."
+       ]
+      },
+      {
+       "code": "MM-03",
+       "k": true,
+       "title": "Integrasi hasil dilakukan secara eksplisit",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Integrasi melalui <em>joint display</em> atau meta-inferensi, bukan dua hasil yang berdampingan."
+       ]
+      },
+      {
+       "code": "MM-04",
+       "k": true,
+       "title": "Setiap komponen memenuhi modul kuantitatif dan kualitatif yang relevan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Modul E-SEM, E-EKS, atau E-QL dikerjakan untuk komponen masing-masing."
+       ]
+      }
+     ],
+     "plain": "Modul E-MM. Metode Campuran (Mixed Methods)",
+     "mod": "E-MM"
+    },
+    {
+     "title": "Modul E-RD. <em>Research and Development</em> dan DBR",
+     "module": true,
+     "items": [
+      {
+       "code": "RD-01",
+       "k": true,
+       "title": "Model pengembangan dinamai dan tahapannya dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Misalnya DBR, ADR, ADDIE, atau 4D."
+       ]
+      },
+      {
+       "code": "RD-02",
+       "k": true,
+       "title": "Setiap siklus atau iterasi dilaporkan beserta keputusan perbaikannya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Perubahan antarsiklus dan dasar keputusannya dijelaskan."
+       ]
+      },
+      {
+       "code": "RD-03",
+       "k": true,
+       "title": "Evaluasi atau validasi produk menggunakan data",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Validasi pakar, uji coba, atau <em>usability</em> dilaporkan dengan data."
+       ]
+      },
+      {
+       "code": "RD-04",
+       "k": true,
+       "title": "Produk, kerangka, atau prinsip desain dapat dilacak ke temuan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Produk dinyatakan eksplisit dan setiap komponennya dikaitkan dengan temuan."
+       ]
+      },
+      {
+       "code": "RD-05",
+       "k": true,
+       "title": "Klaim efektivitas sesuai dengan tahap pengembangan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Efektivitas diuji, atau dinyatakan terbuka bahwa studi baru sampai tahap pengembangan."
+       ]
+      },
+      {
+       "code": "RD-06",
+       "k": false,
+       "title": "Peran pemangku kepentingan atau pengguna dijelaskan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Keterlibatan pengguna dalam desain dan evaluasi diuraikan."
+       ]
+      }
+     ],
+     "plain": "Modul E-RD. Research and Development dan DBR",
+     "mod": "E-RD"
+    },
+    {
+     "title": "Modul E-TEK. <em>Technical Paper</em>: Sistem, Algoritma, Perangkat Lunak, atau Prototipe",
+     "module": true,
+     "items": [
+      {
+       "code": "TEK-01",
+       "k": false,
+       "title": "Masalah teknis dan kebutuhan atau spesifikasi sistem dirumuskan secara terukur",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Kebutuhan fungsional atau nonfungsional, batasan, atau target kinerja dinyatakan sehingga keberhasilan rancangan dapat diuji."
+       ]
+      },
+      {
+       "code": "TEK-02",
+       "k": true,
+       "title": "Arsitektur, algoritma, atau rancangan dijelaskan cukup rinci untuk direplikasi",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Diagram arsitektur, <em>pseudocode</em>, komponen utama, dan parameter penting dilaporkan."
+       ]
+      },
+      {
+       "code": "TEK-03",
+       "k": true,
+       "title": "Lingkungan implementasi dan pengujian dilaporkan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Perangkat keras, perangkat lunak beserta versi, <em>dataset</em> atau beban uji, serta konfigurasi parameter disebutkan."
+       ]
+      },
+      {
+       "code": "TEK-04",
+       "k": true,
+       "title": "Rancangan dibandingkan dengan pembanding (<em>baseline</em>) yang relevan",
+       "b": "naskah mengklaim keunggulan kinerja atas metode atau sistem lain",
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Pembanding mutakhir atau standar praktik dipilih dengan alasan dan diuji pada pengaturan yang setara."
+       ]
+      },
+      {
+       "code": "TEK-05",
+       "k": true,
+       "title": "Metrik evaluasi sesuai dengan tujuan dan hasil dilaporkan beserta variabilitasnya",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Metrik dijustifikasi; jumlah pengulangan (<em>run</em>), simpangan baku, interval, atau uji signifikansi dilaporkan apabila relevan."
+       ]
+      },
+      {
+       "code": "TEK-06",
+       "k": false,
+       "title": "Ketersediaan kode, model, atau artefak dinyatakan",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Tautan repositori beserta lisensi, atau alasan artefak tidak dapat dibagikan, dicantumkan."
+       ]
+      },
+      {
+       "code": "TEK-07",
+       "k": false,
+       "title": "Keterbatasan teknis, kompleksitas, dan ancaman validitas dibahas",
+       "b": null,
+       "lab": "Kriteria terpenuhi (M)",
+       "cr": [
+        "Batas skalabilitas, kebutuhan sumber daya, kondisi uji yang tidak tercakup, atau risiko kegagalan dibahas."
+       ]
+      }
+     ],
+     "plain": "Modul E-TEK. Technical Paper: Sistem, Algoritma, Perangkat Lunak, atau Prototipe",
+     "mod": "E-TEK"
+    }
+   ]
+  }
+ ],
+ "signRole": "Editor",
+ "short": "Pra-terima",
+ "version": "2.3"
+}
