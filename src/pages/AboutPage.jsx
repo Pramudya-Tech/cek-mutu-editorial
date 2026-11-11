@@ -1,45 +1,20 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useStore } from '../lib/store.jsx';
-import { readJsonFile } from '../lib/actions.js';
-import { ping, registryConfig } from '../lib/registry.js';
-import CONFIG from '../data/config.json';
-import { downloadBlob, today } from '../lib/format.js';
-import { Icon } from '../components/Icons.jsx';
+import { api } from '../lib/api.js';
+import { href } from '../lib/router.js';
+import { fmtDateTime } from '../lib/format.js';
 
 export function AboutPage() {
   const store = useStore();
-  const [ask, setAsk] = useState(false);
-  const fileRef = useRef(null);
-  const [url, setUrl] = useState(store.registryStored?.url ?? CONFIG.registryUrl ?? '');
-  const [key, setKey] = useState(store.registryStored?.key ?? CONFIG.registryKey ?? '');
-  const [test, setTest] = useState(null);
+  const [doc, setDoc] = useState('');
+  const [result, setResult] = useState(null);
 
-  async function saveRegistry(e) {
+  async function verify(e) {
     e.preventDefault();
-    const cfg = { url: url.trim(), key: key.trim() };
-    store.setRegistry(cfg);
-    setTest({ state: 'loading' });
-    if (!cfg.url) { setTest({ state: 'off' }); return; }
-    const r = await ping(registryConfig(cfg));
-    setTest(r.ok ? { state: 'ok', rows: r.rows } : { state: 'bad', message: r.message || 'Tidak terhubung' });
-  }
-
-  function backup() {
-    const data = { app: 'cek-mutu-editorial', type: 'backup', savedAt: new Date().toISOString(), checks: store.checks, journals: store.journals.filter((j) => !j.builtIn), signature: store.signature };
-    downloadBlob(new Blob([JSON.stringify(data)], { type: 'application/json' }), `Cadangan-cek-mutu-${today()}.json`);
-  }
-
-  async function restore(e) {
-    const file = e.target.files?.[0]; e.target.value = '';
-    if (!file) return;
-    try {
-      const d = await readJsonFile(file);
-      if (d.app !== 'cek-mutu-editorial' || d.type !== 'backup') throw new Error('ini bukan berkas cadangan');
-      (d.checks || []).forEach((c) => store.saveCheck({ ...c }));
-      (d.journals || []).forEach((j) => store.saveJournal(j));
-      if (d.signature && !store.signature) store.setSignature(d.signature);
-      store.notify(`${(d.checks || []).length} pemeriksaan dipulihkan.`, 'ok');
-    } catch (ex) { store.notify(`Cadangan tidak bisa dipulihkan: ${ex.message}.`, 'bad'); }
+    const id = doc.trim().toUpperCase();
+    if (!id) return;
+    setResult({ loading: true });
+    try { setResult(await api.get(`verify/${encodeURIComponent(id)}`)); } catch (ex) { setResult({ error: ex.message }); }
   }
 
   return (
@@ -53,68 +28,44 @@ export function AboutPage() {
         <div className="prose">
           <p>
             Aplikasi ini membantu editor, reviewer, dan penulis memeriksa naskah dengan checklist mutu editorial versi 2.3.
-            Naskahnya tetap diambil dari OJS. Setiap pemeriksaan menghasilkan PDF bertanda tangan sebagai dokumentasi.
+            Akun, peran, naskah, dan penugasan review dibaca dari OJS; aplikasi tidak pernah mengubah data OJS.
           </p>
+
+          <h3 id="verifikasi">Cek ID dokumen</h3>
+          <p>Setiap PDF mencetak ID dokumen. Masukkan ID itu untuk memastikan PDF berasal dari pemeriksaan yang tercatat.</p>
+          <form onSubmit={verify} className="copyline" style={{ maxWidth: 520 }}>
+            <input className="input" value={doc} onChange={(e) => setDoc(e.target.value)} placeholder="misalnya 8FCE-82D0-EB39-9987-0C1B" aria-label="ID dokumen" />
+            <button type="submit" className="btn">Cek</button>
+          </form>
+          {result?.loading && <p className="meta-line">Memeriksa…</p>}
+          {result?.error && <div className="problems" role="alert">{result.error}</div>}
+          {result && !result.loading && !result.error && (result.found ? (
+            <div className="notice"><b>Tercatat: {result.step}{result.round ? ` putaran ${result.round}` : ''} untuk ID {result.msid}</b>
+              <span>{result.journal} · selesai {fmtDateTime(result.finishedAt)}{result.revision > 1 ? ` · revisi ${result.revision}` : ''}{result.name ? ` · ${result.name}` : ''}
+                {result.checkId && <> · <a href={href(`/cek/${result.checkId}`)}>buka pemeriksaan</a></>}</span></div>
+          ) : (
+            <div className="notice bad"><b>ID dokumen tidak ditemukan.</b><span>PDF ini tidak berasal dari pemeriksaan yang tercatat di aplikasi ini, atau ID-nya salah ketik.</span></div>
+          ))}
+
           <h3>Di mana data disimpan</h3>
           <p>
-            Semua isian, riwayat, dan gambar tanda tangan disimpan di peramban ini saja, tidak dikirim ke server mana pun.
-            Membersihkan data peramban akan menghapusnya, jadi simpan PDF dan berkas isian di tempat yang aman.
+            Isian checklist, PDF yang diekspor, dan tanda tangan tersimpan di database aplikasi pada server, terpisah dari
+            database OJS. Draf tersimpan otomatis setiap kali Anda mengubah isian.
           </p>
-          <h3>Tentang peran dan tautan</h3>
-          <p>
-            Pilihan peran dan tautan dari editor mengarahkan orang ke checklist yang tepat, tetapi bukan pengaman: siapa pun yang
-            membuka aplikasi bisa memilih peran lain. Tautan tidak kedaluwarsa dan tidak memeriksa siapa yang membukanya.
-          </p>
-          <h3>ID dokumen</h3>
-          <p>
-            Saat pemeriksaan diselesaikan, aplikasi menghitung sidik SHA-256 dari isian dan mencetaknya sebagai ID dokumen.
-            Membuka berkas isian (.json) di halaman Riwayat akan menghitung ulang ID itu dan menunjukkan apakah isian berubah.
-          </p>
+          <h3>Siapa melihat apa</h3>
+          <ul>
+            <li>Manajer jurnal melihat semua pemeriksaan di jurnalnya; editor bagian melihat naskah yang ditugaskan kepadanya di OJS.</li>
+            <li>Reviewer hanya melihat checklist review miliknya sendiri, tanpa nama penulis.</li>
+            <li>Penulis hanya melihat pemeriksaan pruf miliknya sendiri.</li>
+            <li>Satu tahap hanya bisa diperiksa sekali per ID submission. Perubahan setelah selesai dibuat sebagai revisi.</li>
+          </ul>
           <h3>Pintasan papan ketik</h3>
           <ul>
             <li>J dan K berpindah antarbutir.</li>
             <li>M memberi status Memenuhi, T memberi status Tidak memenuhi pada butir yang sedang dipilih.</li>
           </ul>
-
-          <h3 id="spreadsheet">Spreadsheet registri</h3>
-          <p>
-            Hubungkan Google Sheet agar semua perangkat melihat riwayat tahap yang sama dan satu tahap tidak bisa diulang untuk ID
-            submission yang sama, termasuk pemeriksaan pruf penulis. Yang dicatat hanya tahap, status, keputusan, nama, tanggal,
-            dan ID dokumen; isian checklist dan tanda tangan tetap di peramban. Cara menyiapkannya ada di apps-script/README.md.
-          </p>
-          <form onSubmit={saveRegistry} style={{ display: 'flex', flexDirection: 'column', gap: 12, margin: '6px 0 6px' }}>
-            <div className="field">
-              <label htmlFor="reg-url">URL Web App Apps Script</label>
-              <input id="reg-url" className="input" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://script.google.com/macros/s/…/exec" />
-            </div>
-            <div className="field">
-              <label htmlFor="reg-key">Kunci bersama (opsional)</label>
-              <input id="reg-key" className="input" value={key} onChange={(e) => setKey(e.target.value)} placeholder="Sama dengan SHARED_KEY di Code.gs" />
-            </div>
-            <div className="actions">
-              <button type="submit" className="btn primary">Simpan dan uji koneksi</button>
-              {test?.state === 'loading' && <span className="sync no">Menghubungi spreadsheet…</span>}
-              {test?.state === 'ok' && <span className="sync ok">Terhubung. {test.rows} catatan di spreadsheet.</span>}
-              {test?.state === 'bad' && <span className="sync no" style={{ color: 'var(--bad)' }}>{test.message}. Periksa URL dan pengaturan akses Web App.</span>}
-              {test?.state === 'off' && <span className="sync no">Mode lokal: duplikasi hanya diperiksa di peramban ini.</span>}
-            </div>
-          </form>
-
-          <h3>Data di peramban ini</h3>
-          <p>{store.checks.length} pemeriksaan, {store.journals.filter((j) => !j.builtIn).length} jurnal tambahan, {store.signature ? 'tanda tangan tersimpan' : 'tanpa tanda tangan tersimpan'}.</p>
-          <div className="actions">
-            <button type="button" className="btn" onClick={backup}><Icon name="download" size={16} />Cadangkan riwayat</button>
-            <button type="button" className="btn" onClick={() => fileRef.current?.click()}><Icon name="upload" size={16} />Pulihkan dari cadangan</button>
-            <input ref={fileRef} type="file" accept=".json,application/json" hidden onChange={restore} />
-            {!ask && <button type="button" className="btn ghost" onClick={() => setAsk(true)}>Bersihkan peramban ini</button>}
-          </div>
-          {ask && (
-            <div className="inline-confirm" style={{ marginTop: 12 }}>
-              Hapus semua pemeriksaan, jurnal tambahan, dan tanda tangan dari peramban ini? Tindakan ini tidak bisa dibatalkan.
-              <button type="button" className="btn danger" onClick={async () => { await store.clearEverything(); setAsk(false); store.notify('Peramban ini sudah dibersihkan.'); }}>Hapus semua</button>
-              <button type="button" className="btn ghost" onClick={() => setAsk(false)}>Batal</button>
-            </div>
-          )}
+          <h3>Akun</h3>
+          <p>Masuk sebagai {store.me.user.name} ({store.me.user.username}) dengan peran {store.me.roles.join(', ')}.</p>
         </div>
       </div>
     </section>

@@ -2,18 +2,25 @@ import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useStore } from '../lib/store.jsx';
 import { getChecklist, sectionsOf, counts, VARIANTS, sharedFieldValue, modulesForPicks, checklistLabel } from '../lib/checklists.js';
 import { validateCheck } from '../lib/validate.js';
-import { finishCheck, reviseCheck, exportCheckPdf, exportCheckFile, processSignature } from '../lib/actions.js';
+import { finishCheck, reviseCheck, exportCheckPdf, makeCheckPdf, processSignature } from '../lib/actions.js';
 import { go, href } from '../lib/router.js';
-import { plain, fmtDate, fmtDateTime, daysUntil, cx } from '../lib/format.js';
+import { plain, fmtDate, fmtDateTime, daysUntil, cx, downloadBlob } from '../lib/format.js';
 import { Icon } from '../components/Icons.jsx';
 import { DeskIllustration } from '../components/Illustration.jsx';
-import { LinkPanel } from '../components/LinkPanel.jsx';
 import { DecisionMail } from '../components/DecisionMail.jsx';
 import { decisionsFor, suggestDecision, decisionLabel } from '../lib/mail.js';
-import { syncCheck } from '../lib/process.js';
+import { api } from '../lib/api.js';
 import { stepOf } from '../lib/checklists.js';
 
-export function CheckPage({ check, query }) {
+export function CheckPage({ check, loading, missing, query }) {
+  if (loading && !missing) {
+    return (
+      <>
+        <section className="pane pane-list" />
+        <section className="pane pane-detail" aria-busy="true"><div className="doc"><p className="lede" style={{ marginTop: 40 }}>Memuat pemeriksaan…</p></div></section>
+      </>
+    );
+  }
   if (!check) {
     return (
       <>
@@ -22,7 +29,7 @@ export function CheckPage({ check, query }) {
           <div className="empty-state">
             <DeskIllustration width={260} />
             <h3>Pemeriksaan tidak ditemukan</h3>
-            <p>Pemeriksaan ini tidak ada di peramban ini. Buka berkas isiannya dari halaman Riwayat, atau mulai pemeriksaan baru.</p>
+            <p>Pemeriksaan ini tidak ada, sudah dihapus, atau tidak bisa Anda lihat dengan akun ini.</p>
             <div className="actions" style={{ justifyContent: 'center', marginTop: 8 }}>
               <a className="btn" href={href('/riwayat')}>Buka riwayat</a>
               <a className="btn primary" href={href('/')}>Checklist baru</a>
@@ -41,9 +48,8 @@ function CheckEditor({ check, query }) {
   const sections = useMemo(() => sectionsOf(cl), [cl]);
   const current = sections.find((s) => s.key === query.bagian) || sections[0];
   const idx = sections.indexOf(current);
-  const ro = check.status === 'finished';
+  const ro = check.status === 'finished' || !check.mine;
   const [search, setSearch] = useState('');
-  const [showLink, setShowLink] = useState(false);
   const detailRef = useRef(null);
   const n = counts(cl, check);
 
@@ -106,10 +112,12 @@ function CheckEditor({ check, query }) {
             <button type="button" className="icon-btn" title="Bagian berikutnya" disabled={idx === sections.length - 1} onClick={() => goSection(sections[idx + 1].key)}><Icon name="arrowR" /></button>
           </div>
           <div className="right">
-            <span className="saved">{ro ? `Selesai ${fmtDate(check.finishedAt)}` : 'Tersimpan otomatis'}</span>
-            {check.role === 'Editor' && <button type="button" className="text-btn" onClick={() => setShowLink((v) => !v)} aria-expanded={showLink}>Buat tautan</button>}
-            <button type="button" className="text-btn" onClick={() => exportCheckFile(check)}>Simpan berkas isian</button>
-            {ro && <button type="button" className="text-btn" onClick={() => exportCheckPdf(check)}>Ekspor PDF</button>}
+            <span className={`saved${store.saveState[check.id] === 'error' ? ' bad' : ''}`}>
+              {check.status === 'finished' ? `Selesai ${fmtDate(check.finishedAt)}`
+                : !check.mine ? `Hanya baca · draf ${check.sign?.name || 'pemeriksa lain'}`
+                  : store.saveState[check.id] === 'saving' ? 'Menyimpan…' : store.saveState[check.id] === 'error' ? 'Belum tersimpan' : 'Tersimpan di server'}
+            </span>
+            {check.hasPdf && <a className="text-btn" href={api.url(`checks/${check.id}/pdf`)} style={{ textDecoration: 'none' }}>PDF tersimpan</a>}
           </div>
         </div>
 
@@ -133,9 +141,7 @@ function CheckEditor({ check, query }) {
             </div>
           </div>
 
-          {showLink && <LinkPanel check={check} onClose={() => setShowLink(false)} />}
-
-          {ro && (
+          {check.status === 'finished' && (
             <div className="banner done">
               <span><b>Pemeriksaan selesai</b> {fmtDateTime(check.finishedAt)}</span>
               <span>ID dokumen <span className="mono">{check.docId}</span></span>
@@ -146,7 +152,7 @@ function CheckEditor({ check, query }) {
                   <button type="button" className="btn" onClick={() => exportCheckPdf(check, current.key)}>PDF bagian {current.letter}</button>
                 )}
                 {current.kind !== 'sign' && check.decision?.value && <button type="button" className="btn" onClick={() => goSection('pengesahan')}>Surat keputusan</button>}
-                <ReviseButton check={check} />
+                {(check.mine || check.role === 'Editor') && <ReviseButton check={check} />}
               </span>
             </div>
           )}
@@ -391,7 +397,7 @@ function ItemRow({ it, a, ro, update }) {
 function SignSection({ cl, check, update, ro, goSection }) {
   const store = useStore();
   const [removeWhite, setRemoveWhite] = useState(true);
-  const [remember, setRemember] = useState(true);
+  const [remember, setRemember] = useState(!store.signature?.image);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
   const fileRef = useRef(null);
@@ -406,7 +412,7 @@ function SignSection({ cl, check, update, ro, goSection }) {
     try {
       const image = await processSignature(file, { removeWhite });
       update((c) => { c.sign.image = image; });
-      if (remember) store.setSignature({ ...(saved || {}), name: s.name || saved?.name || '', image, roles: { ...(saved?.roles || {}), [check.role]: s.role || cl.signRole } });
+      if (remember) store.setSignature({ ...(saved || {}), name: s.name || saved?.name || '', image, roles: { ...(saved?.roles || {}), [check.role]: s.role || cl.signRole } }).catch(() => {});
     } catch (ex) { setErr(ex.message); }
   }
 
@@ -414,14 +420,18 @@ function SignSection({ cl, check, update, ro, goSection }) {
     if (problems.length) return;
     setBusy(true);
     try {
-      const done = finishCheck(check);
-      store.saveCheck(done);
-      syncCheck(store, done).then((u) => { if (u && !u.ok && !u.skipped) store.notify('PDF selesai, tetapi belum tercatat di spreadsheet. Catat ulang dari halaman Riwayat.', 'bad'); });
-      if (remember && s.name) store.setSignature({ ...(saved || {}), name: s.name, image: s.image, roles: { ...(saved?.roles || {}), [check.role]: s.role } });
-      await exportCheckPdf(done);
-      store.notify(`Selesai. PDF diunduh dengan ID dokumen ${done.docId}.`, 'ok');
+      const saved = await store.finishCheck(finishCheck(check));
+      if (remember && s.name) store.setSignature({ ...(store.signature || {}), name: s.name, image: s.image, roles: { ...(store.signature?.roles || {}), [check.role]: s.role } }).catch(() => {});
+      const { blob, name } = await makeCheckPdf(saved);
+      downloadBlob(blob, name);
+      try {
+        await store.uploadPdf(saved.id, blob, name);
+        store.notify(`Selesai. PDF diunduh dan disimpan di server dengan ID dokumen ${saved.docId}.`, 'ok');
+      } catch (ex) {
+        store.notify(`PDF diunduh, tetapi belum tersimpan di server: ${ex.message}`, 'bad');
+      }
     } catch (ex) {
-      store.notify(`PDF gagal dibuat: ${ex.message}`, 'bad');
+      store.notify(`Pemeriksaan belum bisa diselesaikan: ${ex.message}`, 'bad');
     } finally { setBusy(false); }
   }
 
@@ -461,7 +471,7 @@ function SignSection({ cl, check, update, ro, goSection }) {
           {!ro && (
             <div className="actions" style={{ gap: 18 }}>
               <label className="check"><input type="checkbox" checked={removeWhite} onChange={(e) => setRemoveWhite(e.target.checked)} /><span>Hapus latar putih</span></label>
-              <label className="check"><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} /><span>Ingat di peramban ini</span></label>
+              <label className="check"><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} /><span>Simpan ke akun saya</span></label>
             </div>
           )}
           {err && <div className="problems" role="alert">{err}</div>}
@@ -504,22 +514,21 @@ function SignSection({ cl, check, update, ro, goSection }) {
           </div>
         )}
         <div className="actions wide">
-          {ro ? (
+          {check.status === 'finished' ? (
             <>
               <button type="button" className="btn primary" onClick={() => exportCheckPdf(check)}><Icon name="download" size={16} />Ekspor PDF lengkap</button>
-              <button type="button" className="btn" onClick={() => exportCheckFile(check)}>Simpan berkas isian</button>
             </>
-          ) : (
+          ) : ro ? null : (
             <button type="button" className="btn primary" disabled={problems.length > 0 || busy} onClick={finish}>
               <Icon name="check" size={16} />{busy ? 'Membuat PDF…' : 'Selesaikan dan ekspor PDF'}
             </button>
           )}
           <span style={{ fontSize: 12.5, color: 'var(--muted)', maxWidth: 380 }}>
-            {ro ? 'Pemeriksaan sudah dikunci. Gunakan Revisi untuk mengubah isian.' : 'Setelah selesai, isian dikunci dan diberi ID dokumen. Surat keputusan siap disalin setelahnya.'}
+            {check.status === 'finished' ? 'Pemeriksaan sudah dikunci. Gunakan Revisi untuk mengubah isian.' : ro ? 'Hanya pemeriksa yang memulai draf ini yang bisa mengisi dan menyelesaikannya.' : 'Setelah selesai, isian dikunci, diberi ID dokumen, dan PDF-nya disimpan di server. Surat keputusan siap disalin setelahnya.'}
           </span>
         </div>
       </div>
-      {ro && decisionsFor(check) && check.decision?.value && <DecisionMail check={check} />}
+      {check.status === 'finished' && decisionsFor(check) && check.decision?.value && <DecisionMail check={check} />}
     </div>
   );
 }
@@ -528,16 +537,18 @@ function ReviseButton({ check }) {
   const store = useStore();
   const [open, setOpen] = useState(false);
   const [reason, setReason] = useState('');
+  const [busy, setBusy] = useState(false);
   if (!open) return <button type="button" className="btn ghost" onClick={() => setOpen(true)}><Icon name="refresh" size={16} />Revisi</button>;
   return (
     <span className="actions" style={{ width: '100%' }}>
       <input className="input" style={{ flex: '1 1 240px', background: '#fff' }} placeholder="Alasan revisi" value={reason} onChange={(e) => setReason(e.target.value)} aria-label="Alasan revisi" />
-      <button type="button" className="btn primary" disabled={!reason.trim()} onClick={() => {
-        const next = reviseCheck(check, reason.trim());
-        store.saveCheck(next);
-        syncCheck(store, next);
-        store.notify(`Revisi ${next.revision} dibuat. Versi sebelumnya tetap ada di Riwayat.`);
-        go(`/cek/${next.id}`);
+      <button type="button" className="btn primary" disabled={!reason.trim() || busy} onClick={async () => {
+        setBusy(true);
+        const r = await store.createCheck(reviseCheck(check, reason.trim()));
+        setBusy(false);
+        if (!r.check) { store.notify(r.message || r.error, 'bad'); return; }
+        store.notify(`Revisi ${r.check.revision} dibuat. Versi sebelumnya tetap ada di Riwayat.`);
+        go(`/cek/${r.check.id}`);
       }}>Buat revisi</button>
       <button type="button" className="btn ghost" onClick={() => setOpen(false)}>Batal</button>
     </span>

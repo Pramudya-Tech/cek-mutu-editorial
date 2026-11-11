@@ -1,81 +1,98 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useStore } from '../lib/store.jsx';
-import { GATES, VARIANTS, findChecklist, checklistLabel, getChecklist, counts } from '../lib/checklists.js';
-import { listRows } from '../lib/registry.js';
-import { startStep, entriesFor, previousEditorStep, describeEntry } from '../lib/process.js';
+import { GATES, VARIANTS, findChecklist, checklistLabel, getChecklist, counts, STEPS } from '../lib/checklists.js';
+import { startStep, describeEntry } from '../lib/process.js';
+import { api } from '../lib/api.js';
 import { go, href } from '../lib/router.js';
-import { relDays, digitsOnly, fmtDate } from '../lib/format.js';
+import { relDays, fmtDate, daysUntil } from '../lib/format.js';
 import { Icon } from '../components/Icons.jsx';
+
+const STEP_NAME = Object.fromEntries(STEPS.map((s) => [s.key, s.name]));
+
+function useSubmissions(role, journalId, q) {
+  const [state, setState] = useState({ items: [], loading: true, error: '' });
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    let off = false;
+    setState((s) => ({ ...s, loading: true, error: '' }));
+    const t = setTimeout(async () => {
+      try {
+        const params = new URLSearchParams({ role, q });
+        if (role === 'Editor' && journalId) params.set('journal', journalId);
+        const r = await api.get(`submissions?${params}`);
+        if (!off) setState({ items: r.items, loading: false, error: '' });
+      } catch (e) {
+        if (!off) setState({ items: [], loading: false, error: e.message });
+      }
+    }, q ? 250 : 0);
+    return () => { off = true; clearTimeout(t); };
+  }, [role, journalId, q, tick]);
+  return { ...state, reload: () => setTick((n) => n + 1) };
+}
+
+function nextGate(progress) {
+  for (const g of GATES) if (progress?.[`G${g.n}`] !== 'done') return g.n;
+  return 4;
+}
 
 export function StartPage({ query }) {
   const store = useStore();
-  const { checks, settings, setSettings, journals, notify } = store;
+  const { checks, settings, setSettings, journals } = store;
   const role = settings.role;
-  const [journalId, setJournalId] = useState(query.jurnal || settings.journalId || journals[0]?.id || '');
-  const [variant, setVariant] = useState(query.jenis || settings.variant || 'emp');
-  const [gate, setGate] = useState(Number(query.gate) || 1);
-  const [round, setRoundState] = useState(Number(query.putaran) || 1);
-  const setRound = setRoundState;
-  const [msid, setMsid] = useState(digitsOnly(query.naskah || ''));
-  const [code, setCode] = useState('R1');
+  const editorJournals = journals.filter((j) => j.isEditor);
+  const [journalId, setJournalId] = useState(settings.journalId || editorJournals[0]?.id || null);
+  const [variant, setVariant] = useState(settings.variant || 'emp');
+  const [q, setQ] = useState(query.naskah || '');
+  const [selKey, setSelKey] = useState(query.naskah ? `${query.naskah}-` : null);
+  const [gate, setGate] = useState(Number(query.gate) || null);
   const [busy, setBusy] = useState(false);
-  const [conflict, setConflict] = useState(null);
+  const [problem, setProblem] = useState(null);
   const [prereq, setPrereq] = useState(null);
-  const [offline, setOffline] = useState('');
-  const [title, setTitle] = useState(query.judul || '');
-  const [error, setError] = useState('');
+  const subs = useSubmissions(role, journalId, q);
 
   const drafts = useMemo(() => checks
-    .filter((c) => c.status === 'draft' && c.role === role)
+    .filter((c) => c.status === 'draft' && c.mine && c.role === role)
     .sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || '')), [checks, role]);
 
-  const journal = journals.find((j) => j.id === journalId);
-  const known = useMemo(() => {
-    const m = new Map();
-    checks.forEach((c) => { if (c.manuscript?.id && c.journal?.name === journal?.name) m.set(c.manuscript.id, c.manuscript.title); });
-    return m;
-  }, [checks, journal]);
+  const keyOf = (s) => `${s.id}-${s.review?.id || ''}`;
+  const sel = subs.items.find((s) => keyOf(s) === selKey) || (selKey && subs.items.length === 1 && String(subs.items[0].id) === selKey.split('-')[0] ? subs.items[0] : null);
+  const progress = sel?.progress || {};
+  const g = gate || nextGate(progress);
+  const cl = findChecklist({ role, variant, gate: g });
+  const journal = journals.find((j) => j.id === (sel?.journalId ?? journalId));
 
-  const cl = findChecklist({ role, variant, gate });
-
-  function onMsid(v) {
-    const d = digitsOnly(v);
-    setMsid(d); setConflict(null); setPrereq(null); setOffline('');
-    if (!title && known.get(d)) setTitle(known.get(d));
+  function choose(s) {
+    setSelKey(keyOf(s)); setProblem(null); setPrereq(null);
+    if (role === 'Editor') setGate(nextGate(s.progress));
   }
 
-  async function start(e, { force = false, skipRegistry = false } = {}) {
-    e?.preventDefault();
-    if (!journal) { setError('Pilih jurnal terlebih dahulu, atau tambahkan jurnal baru.'); return; }
-    if (!msid) { setError('Isi ID submission dari OJS (angka saja).'); return; }
-    if (role === 'Reviewer' && !code.trim()) { setError('Isi kode reviewer, misalnya R1.'); return; }
-    setError(''); setConflict(null); setOffline('');
+  async function start(force = false) {
+    if (!sel) { setProblem({ text: 'Pilih naskah dari daftar OJS terlebih dahulu.' }); return; }
+    if (role === 'Reviewer' && sel.review?.checkId) { go(`/cek/${sel.review.checkId}`); return; }
+    if (role === 'Editor' && !force && g > 1 && progress[`G${g - 1}`] !== 'done') {
+      setPrereq(STEPS.find((s) => s.key === `G${g - 1}`)); return;
+    }
+    setProblem(null); setPrereq(null);
     setSettings({ journalId, variant });
     setBusy(true);
-    if (role === 'Editor' && !force) {
-      let remote = [];
-      if (store.registry.enabled && !skipRegistry) {
-        const r = await listRows(store.registry, journal.name, msid);
-        if (!r.ok) { setBusy(false); setOffline(r.message || 'Spreadsheet tidak bisa dihubungi'); return; }
-        remote = r.rows; store.setRemote(journal.name, msid, remote);
-      }
-      const prev = previousEditorStep(gate, entriesFor(checks, remote, journal.name, msid));
-      if (prev) { setBusy(false); setPrereq(prev); return; }
-    }
-    const r = await startStep(store, { role, variant, gate, round, code: role === 'Reviewer' ? code.trim() : '', journal, manuscript: { id: msid, title: title.trim() } }, { skipRegistry });
+    const r = await startStep(store, {
+      role, variant, gate: g, reviewId: sel.review?.id, journal, manuscript: { id: sel.id, title: sel.title },
+    });
     setBusy(false);
-    if (r.conflict) { setConflict(r.conflict); return; }
-    if (r.error) { setOffline(r.error); return; }
-    go(`/cek/${r.check.id}`);
+    if (r.check) { go(`/cek/${r.check.id}`); return; }
+    if (r.conflict) { setProblem({ conflict: r.conflict, text: r.message }); subs.reload(); return; }
+    setProblem({ text: r.message || r.error });
   }
 
-  const conflictLocal = conflict && checks.find((c) => c.id === conflict.id);
+  const conflictLocal = problem?.conflict?.id && checks.find((c) => c.id === problem.conflict.id);
+  const taken = (n) => progress[`G${n}`];
+
   return (
     <>
       <section className="pane pane-list" aria-label="Draf">
         <div className="list-head">
           <h2 className="list-title">Lanjutkan</h2>
-          <p className="list-sub">Draf {role.toLowerCase()} di peramban ini</p>
+          <p className="list-sub">Draf {role.toLowerCase()} Anda</p>
         </div>
         {drafts.length === 0 && (
           <div className="card off"><div className="card-title">Belum ada draf</div><div className="card-body">Pemeriksaan yang belum selesai akan muncul di sini.</div></div>
@@ -89,7 +106,7 @@ export function StartPage({ query }) {
                 <div className="card-title">{c.manuscript?.title || 'Tanpa judul'} <span className="idchip">#{c.manuscript?.id}</span></div>
                 <span className={`ring ${n.tm ? 'warn' : n.filled ? 'part' : ''}`} aria-hidden="true" />
               </div>
-              <div className="card-body">{checklistLabel(dcl)} · {c.journal?.name}</div>
+              <div className="card-body">{checklistLabel(dcl)}{c.code ? ` · ${c.code}` : ''} · {c.journal?.name}</div>
               <div className="card-foot"><span>{n.filled}/{n.total} butir</span><span className="accent">{relDays(c.updatedAt)}</span></div>
             </a>
           );
@@ -97,7 +114,7 @@ export function StartPage({ query }) {
       </section>
 
       <section className="pane pane-detail" aria-label="Mulai pemeriksaan">
-        <div className="topbar"><div className="left" /><div className="right"><span className="saved">Tersimpan di peramban ini saja</span></div></div>
+        <div className="topbar"><div className="left" /><div className="right"><span className="saved">Terhubung ke OJS</span></div></div>
         <div className="doc">
           <div className="gutter-row" style={{ marginTop: 18 }}>
             <span className="marker">Baru</span>
@@ -106,25 +123,63 @@ export function StartPage({ query }) {
           <div className="gutter-row">
             <span />
             <div>
-              <div className="tags"><span>{role}</span>{role !== 'Penulis' && <span>{VARIANTS.find((v) => v.id === variant)?.short}</span>}{role === 'Editor' && <span>{GATES[gate - 1].name}</span>}</div>
+              <div className="tags"><span>{role}</span>{role !== 'Penulis' && <span>{VARIANTS.find((v) => v.id === variant)?.short}</span>}{role === 'Editor' && sel && <span>{GATES[g - 1].name}</span>}</div>
               <p className="lede">
-                Ambil naskah dari OJS seperti biasa, lalu periksa di sini bagian demi bagian. Di akhir, unggah tanda tangan
-                dan ekspor PDF sebagai dokumentasi pemeriksaan.
-                {role === 'Penulis' && ' Biasanya penulis membuka checklist ini lewat tautan yang dikirim editor.'}
+                {role === 'Editor' && 'Pilih naskah dari OJS, lalu tahap pemeriksaannya. Satu tahap hanya bisa diperiksa sekali per ID submission.'}
+                {role === 'Reviewer' && 'Ini penugasan review Anda di OJS. Unduh naskah dari OJS seperti biasa, lalu isi checklist telaah di sini.'}
+                {role === 'Penulis' && 'Ini naskah Anda di OJS. Periksa pruf dari editor, lalu isi checklist pemeriksaan pruf di sini.'}
               </p>
             </div>
           </div>
 
-          <form className="form" onSubmit={start} noValidate>
+          <div className="form">
+            {role === 'Editor' && editorJournals.length > 1 && (
+              <div className="field wide">
+                <label htmlFor="start-journal">Jurnal</label>
+                <select id="start-journal" className="input" value={journalId || ''} onChange={(e) => { setJournalId(Number(e.target.value)); setSelKey(null); setSettings({ journalId: Number(e.target.value) }); }}>
+                  {editorJournals.map((j) => <option key={j.id} value={j.id}>{j.name}</option>)}
+                </select>
+              </div>
+            )}
+
             <div className="field wide">
-              <label htmlFor="start-journal">Jurnal</label>
-              <select id="start-journal" className="input" value={journalId} onChange={(e) => setJournalId(e.target.value)}>
-                {journals.map((j) => <option key={j.id} value={j.id}>{j.name}</option>)}
-              </select>
-              <span className="hint">Jurnal belum ada? <a href={href('/jurnal', { baru: '1' })}>Tambah jurnal</a></span>
+              <label htmlFor="start-q">{role === 'Reviewer' ? 'Penugasan review' : 'Naskah di OJS'}</label>
+              <div className="search" style={{ background: 'var(--card)' }}>
+                <Icon name="search" size={16} />
+                <input id="start-q" type="search" placeholder="Cari ID submission atau judul" value={q} onChange={(e) => setQ(e.target.value)} autoComplete="off" />
+              </div>
+              <div className="sublist" role="listbox" aria-label="Naskah">
+                {subs.loading && <div className="sub-empty">Memuat dari OJS…</div>}
+                {!subs.loading && subs.error && <div className="sub-empty bad">{subs.error}</div>}
+                {!subs.loading && !subs.error && subs.items.length === 0 && (
+                  <div className="sub-empty">{q ? `Tidak ada naskah yang cocok dengan “${q}”.` : role === 'Reviewer' ? 'Belum ada penugasan review aktif untuk Anda di OJS.' : role === 'Penulis' ? 'Belum ada naskah Anda di OJS.' : 'Belum ada naskah di jurnal ini.'}</div>
+                )}
+                {!subs.loading && subs.items.map((s) => (
+                  <button type="button" role="option" aria-selected={sel ? keyOf(s) === keyOf(sel) : false} key={keyOf(s)} className="sub" onClick={() => choose(s)}>
+                    <span className="sub-top"><span className="idchip">#{s.id}</span><b>{s.title || 'Tanpa judul'}</b></span>
+                    <span className="sub-meta">
+                      {role === 'Reviewer' ? (
+                        <>Putaran {s.review.round} · {s.review.code}{s.review.due ? ` · tenggat ${fmtDate(s.review.due)}${daysUntil(s.review.due) < 0 ? ' (lewat)' : ''}` : ''}
+                          {s.review.checkStatus === 'finished' ? ' · checklist selesai' : s.review.checkStatus === 'draft' ? ' · draf ada' : ''}</>
+                      ) : (
+                        <>{s.authors?.length ? `${s.authors.slice(0, 2).join(', ')}${s.authors.length > 2 ? ' dkk.' : ''} · ` : ''}OJS: {s.stage}{s.statusId !== 1 ? ` · ${s.status}` : ''}</>
+                      )}
+                    </span>
+                    {role === 'Editor' && Object.keys(s.progress || {}).length > 0 && (
+                      <span className="sub-steps">
+                        {['G1', 'R', 'G2', 'G3', 'P', 'G4'].filter((k) => s.progress[k]).map((k) => (
+                          <span key={k} className={k === 'R' ? (s.progress.R.done ? 'done' : 'draft') : s.progress[k]}>
+                            {STEP_NAME[k]}{k === 'R' ? ` ${s.progress.R.done}` : ''}
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {role !== 'Penulis' && (
+            {sel && role !== 'Penulis' && !(role === 'Reviewer' && sel.review?.checkId) && (
               <fieldset className="field wide" style={{ border: 0, padding: 0, margin: 0 }}>
                 <legend className="lab" style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-2)', marginBottom: 7 }}>Jenis artikel</legend>
                 <div className="choice-grid">
@@ -138,90 +193,62 @@ export function StartPage({ query }) {
               </fieldset>
             )}
 
-            {role === 'Editor' && (
+            {sel && role === 'Editor' && (
               <fieldset className="field wide" style={{ border: 0, padding: 0, margin: 0 }}>
-                <legend className="lab" style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-2)', marginBottom: 7 }}>Gate pemeriksaan</legend>
+                <legend className="lab" style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-2)', marginBottom: 7 }}>Tahap pemeriksaan untuk #{sel.id}</legend>
                 <div className="choice-grid">
-                  {GATES.map((g) => (
-                    <label className="choice" key={g.n}>
-                      <input type="radio" name="gate" value={g.n} checked={gate === g.n} onChange={() => { setGate(g.n); setConflict(null); setPrereq(null); }} />
-                      <span><b>{g.name}</b><small>Tahap {g.n} · {g.id}</small></span>
+                  {GATES.map((x) => (
+                    <label className="choice" key={x.n}>
+                      <input type="radio" name="gate" value={x.n} checked={g === x.n} onChange={() => { setGate(x.n); setProblem(null); setPrereq(null); }} />
+                      <span><b>{x.name}</b><small>{taken(x.n) === 'done' ? 'Sudah selesai' : taken(x.n) === 'draft' ? 'Sedang dikerjakan' : `Tahap ${x.n} · ${x.id}`}</small></span>
                     </label>
                   ))}
                 </div>
               </fieldset>
             )}
 
-            {role === 'Reviewer' && (
-              <div className="field wide">
-                <span className="lab">Putaran telaah</span>
-                <div className="chips" role="radiogroup" aria-label="Putaran telaah">
-                  {[1, 2, 3].map((r) => (
-                    <label className="chip" key={r}><input type="radio" name="round" checked={round === r} onChange={() => { setRound(r); setConflict(null); }} /><span>Putaran {r}</span></label>
-                  ))}
-                </div>
-              </div>
-            )}
-            {role === 'Reviewer' && (
-              <div className="field">
-                <label htmlFor="start-code">Kode reviewer</label>
-                <input id="start-code" className="input" value={code} onChange={(e) => { setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 8)); setConflict(null); }} />
-                <span className="hint">Dari editor, misalnya R1. Satu kode hanya bisa mengisi satu kali per putaran.</span>
-              </div>
+            {sel && role === 'Penulis' && sel.stageId < 5 && (
+              <div className="notice wide"><span>Naskah ini masih di tahap {sel.stage} di OJS. Pruf biasanya dikirim editor pada tahap Production; mulai bila editor sudah memintanya.</span></div>
             )}
 
-            <div className="field">
-              <label htmlFor="start-msid">ID submission di OJS</label>
-              <input id="start-msid" className="input" value={msid} onChange={(e) => onMsid(e.target.value)} list="known-ms" placeholder="misalnya 4127" autoComplete="off"
-                inputMode="numeric" pattern="[0-9]*" aria-describedby="msid-hint" />
-              <span className="hint" id="msid-hint">Angka saja, sama dengan ID di OJS.</span>
-              <datalist id="known-ms">{[...known.keys()].map((k) => <option key={k} value={k} />)}</datalist>
-            </div>
-            <div className="field">
-              <label htmlFor="start-title">Judul artikel</label>
-              <input id="start-title" className="input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Salin dari OJS" />
-            </div>
-
-            {error && <div className="problems" role="alert">{error}</div>}
-            {conflict && (
+            {problem && (
               <div className="problems wide" role="alert">
-                <b>{describeEntry(conflict)} untuk ID {msid} sudah {conflict.status === 'finished' ? 'selesai' : 'dimulai'}</b>
-                <div style={{ marginTop: 4 }}>
-                  {conflict.status === 'finished' ? `Diselesaikan ${fmtDate(conflict.finishedAt)}` : `Dimulai ${relDays(conflict.updatedAt)}`}
-                  {conflict.name ? ` oleh ${conflict.name}` : ''}{conflict.local === false ? ' (tercatat di spreadsheet)' : ''}.
-                  {' '}Satu tahap hanya diperiksa sekali per naskah. Untuk mengubah hasilnya, buka pemeriksaan itu dan gunakan Revisi.
-                </div>
-                <div className="actions" style={{ marginTop: 10 }}>
-                  {conflictLocal && <a className="btn" href={href(`/cek/${conflictLocal.id}`)}>Buka pemeriksaan itu</a>}
-                  <a className="btn ghost" href={href('/riwayat', { naskah: `${journal?.name}|${msid}` })}>Lihat riwayat naskah</a>
-                </div>
+                <b>{problem.conflict ? `${describeEntry(problem.conflict)} untuk ID ${sel?.id} sudah ${problem.conflict.status === 'finished' ? 'selesai' : 'dimulai'}` : problem.text}</b>
+                {problem.conflict && (
+                  <>
+                    <div style={{ marginTop: 4 }}>
+                      {problem.conflict.status === 'finished' ? `Diselesaikan ${fmtDate(problem.conflict.finishedAt)}` : `Dimulai ${relDays(problem.conflict.updatedAt)}`}
+                      {problem.conflict.name ? ` oleh ${problem.conflict.name}` : ''}.
+                      {' '}Satu tahap hanya diperiksa sekali per naskah. Untuk mengubah hasilnya, buka pemeriksaan itu dan gunakan Revisi.
+                    </div>
+                    <div className="actions" style={{ marginTop: 10 }}>
+                      {conflictLocal && <a className="btn" href={href(`/cek/${conflictLocal.id}`)}>Buka pemeriksaan itu</a>}
+                      {role === 'Editor' && <a className="btn ghost" href={href('/riwayat', { naskah: sel?.id })}>Lihat riwayat naskah</a>}
+                    </div>
+                  </>
+                )}
               </div>
             )}
             {prereq && (
               <div className="problems wide" role="alert" style={{ background: 'var(--gold-soft)' }}>
-                <b>{prereq.name} untuk ID {msid} belum {store.registry.enabled ? 'tercatat selesai' : 'selesai di peramban ini'}</b>
-                <div style={{ marginTop: 4 }}>Urutan prosesnya Preliminary, Peer Review, Pre-Acceptance, Post-Acceptance, Author Proof, lalu Publication. Lanjutkan hanya bila tahap sebelumnya dikerjakan di perangkat lain.</div>
+                <b>{prereq.name} untuk ID {sel?.id} belum selesai</b>
+                <div style={{ marginTop: 4 }}>Urutan prosesnya Preliminary, Peer Review, Pre-Acceptance, Post-Acceptance, Author Proof, lalu Publication.</div>
                 <div className="actions" style={{ marginTop: 10 }}>
-                  <button type="button" className="btn" onClick={(e) => { setPrereq(null); start(e, { force: true }); }}>Tetap mulai {GATES[gate - 1].name}</button>
+                  <button type="button" className="btn" onClick={() => start(true)}>Tetap mulai {GATES[g - 1].name}</button>
                   <button type="button" className="btn ghost" onClick={() => setPrereq(null)}>Batal</button>
                 </div>
               </div>
             )}
-            {offline && (
-              <div className="problems wide" role="alert">
-                <b>{offline}</b>
-                <div style={{ marginTop: 4 }}>Tanpa spreadsheet, aplikasi hanya bisa memeriksa duplikasi di peramban ini.</div>
-                <div className="actions" style={{ marginTop: 10 }}>
-                  <button type="button" className="btn" onClick={(e) => start(e)}>Coba lagi</button>
-                  <button type="button" className="btn ghost" onClick={(e) => start(e, { skipRegistry: true, force: true })}>Mulai tanpa pengecekan spreadsheet</button>
-                </div>
-              </div>
-            )}
             <div className="actions wide">
-              <button className="btn primary" type="submit" disabled={busy}><Icon name="arrowR" size={16} />{busy ? 'Memeriksa riwayat…' : 'Mulai pemeriksaan'}</button>
-              <span className="hint" style={{ fontSize: 12.5, color: 'var(--muted)' }}>{cl ? `${checklistLabel(cl)}: ${cl.tables.reduce((s, t) => s + t.groups.filter((g) => !g.module).reduce((a, g) => a + g.items.length, 0), 0)} butir inti` : ''}</span>
+              <button className="btn primary" type="button" disabled={busy || !sel} onClick={() => start()}>
+                <Icon name="arrowR" size={16} />
+                {busy ? 'Memeriksa riwayat…' : role === 'Reviewer' && sel?.review?.checkId ? 'Buka checklist review' : 'Mulai pemeriksaan'}
+              </button>
+              <span className="hint" style={{ fontSize: 12.5, color: 'var(--muted)' }}>
+                {sel ? `#${sel.id} · ${cl ? `${checklistLabel(cl)}: ${cl.tables.reduce((s, t) => s + t.groups.filter((x) => !x.module).reduce((a, x) => a + x.items.length, 0), 0)} butir inti` : ''}` : 'Pilih naskah dari daftar.'}
+              </span>
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </>

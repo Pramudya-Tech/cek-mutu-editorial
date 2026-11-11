@@ -1,23 +1,23 @@
 import { STEPS, stepKeyOf, getChecklist } from './checklists.js';
-import { rowFromCheck, uniqueKey, listRows, upsertCheck } from './registry.js';
 import { newCheck } from './actions.js';
+import { api } from './api.js';
 
 // Decisions that end the manuscript's process.
 const CLOSING = { G1: ['reject'], G2: ['reject'] };
 
-const sameManuscript = (a, journal, msid) => String(a.msid) === String(msid) && String(a.journal).trim().toLowerCase() === String(journal).trim().toLowerCase();
-
-// Local checks and registry rows as one list of entries; local wins on the same id.
-export function entriesFor(checks, remoteRows, journal, msid) {
-  const local = checks
-    .filter((c) => String(c.manuscript?.id) === String(msid) && (c.journal?.name || '').trim().toLowerCase() === String(journal).trim().toLowerCase())
-    .map((c) => ({ ...rowFromCheck(c), local: true, check: c, synced: c.synced }));
-  const ids = new Set(local.map((e) => e.id));
-  const remote = (remoteRows || []).filter((r) => !ids.has(r.id) && sameManuscript(r, journal, msid)).map((r) => ({ ...r, local: false }));
-  return [...local, ...remote];
+// One slot per stage: a step of a submission, or one review assignment.
+export function uniqueKey(e) {
+  if (e.slot) return e.slot;
+  return `${e.msid}|${e.step}|${e.reviewId || ''}`;
 }
 
-// Latest revision per unique key (a step, or a reviewer's round).
+// Server entries for a submission, with the full check attached when this
+// browser has it loaded.
+export function entriesFor(checks, serverEntries) {
+  const byId = new Map(checks.map((c) => [c.id, c]));
+  return (serverEntries || []).map((e) => ({ ...e, check: byId.get(e.id) || null }));
+}
+
 function latestPerKey(entries) {
   const m = new Map();
   for (const e of entries) {
@@ -34,7 +34,7 @@ export function pipeline(entries) {
   const steps = STEPS.map((s) => {
     const list = latest.filter((e) => e.step === s.key).sort((a, b) => (Number(a.round) || 0) - (Number(b.round) || 0) || String(a.code).localeCompare(String(b.code)));
     const done = list.filter((e) => e.status === 'finished');
-    const status = list.length === 0 ? 'none' : (s.key === 'R' ? (done.length ? 'done' : 'draft') : (done.length ? 'done' : 'draft'));
+    const status = list.length === 0 ? 'none' : (done.length ? 'done' : 'draft');
     const step = { ...s, entries: list, status, closed: !!closedBy, closedBy };
     const closing = done.find((e) => CLOSING[s.key]?.includes(e.decision));
     if (closing && !closedBy) closedBy = { step: s, entry: closing };
@@ -44,15 +44,6 @@ export function pipeline(entries) {
   return { steps, closedBy, next };
 }
 
-// Is this step already taken for this manuscript?
-export function findConflict(params, entries) {
-  const key = uniqueKey(params);
-  const same = entries.filter((e) => uniqueKey(e) === key);
-  if (!same.length) return null;
-  const latest = same.reduce((a, e) => ((Number(e.revision) || 1) > (Number(a.revision) || 1) ? e : a));
-  return latest;
-}
-
 export function previousEditorStep(gate, entries) {
   if (gate <= 1) return null;
   const prevKey = `G${gate - 1}`;
@@ -60,49 +51,28 @@ export function previousEditorStep(gate, entries) {
   return done ? null : STEPS.find((s) => s.key === prevKey);
 }
 
-// Start a step for a manuscript, refusing duplicates found locally or in the
-// shared registry. Returns { check } or { conflict } or { error }.
-export async function startStep(store, params, { skipRegistry = false } = {}) {
-  const { role, variant, gate, round, code, journal, manuscript, link } = params;
-  const step = role === 'Editor' ? `G${gate}` : role === 'Reviewer' ? 'R' : 'P';
-  const probe = { journal: journal.name, msid: manuscript.id, step, round: step === 'R' ? Number(round) || 1 : '', code: step === 'R' ? String(code || '').toUpperCase() : '' };
-
-  let remote = [];
-  if (store.registry.enabled && !skipRegistry) {
-    const r = await listRows(store.registry, journal.name, manuscript.id);
-    if (!r.ok) return { error: r.message || 'Spreadsheet tidak bisa dihubungi', offline: r.reason === 'network' };
-    remote = r.rows;
-    store.setRemote(journal.name, manuscript.id, remote);
-  }
-  const entries = entriesFor(store.checks, remote, journal.name, manuscript.id);
-  const conflict = findConflict(probe, entries);
-  if (conflict) return { conflict };
-
-  const check = newCheck({ role, variant, gate, round, journal, manuscript, signature: store.signature, link: link || (code ? { code } : null) });
-  if (code && !link) { check.code = String(code).toUpperCase(); check.locked = false; check.fields['Kode reviewer'] = check.code; }
-  store.saveCheck(check);
-
-  if (store.registry.enabled && !skipRegistry) {
-    const u = await upsertCheck(store.registry, check);
-    if (!u.ok && u.reason === 'duplicate') {
-      store.deleteCheck(check.id);
-      return { conflict: { ...u.existing, local: false } };
-    }
-    store.saveCheck({ ...check, synced: !!u.ok });
-  }
-  return { check };
+export async function fetchSubmission(msid) {
+  return api.get(`submissions/${msid}`);
 }
 
-// Record a check in the registry after it changes state (finished, revised).
-export async function syncCheck(store, check) {
-  if (!store.registry.enabled) return { ok: true, skipped: true };
-  const u = await upsertCheck(store.registry, check);
-  store.saveCheck({ ...check, synced: !!u.ok });
-  return u;
+// Start a stage. The server refuses repeats and checks the OJS assignment.
+// Returns { check } or { conflict, message } or { closed, message } or { error }.
+export async function startStep(store, { role, variant, gate, reviewId, journal, manuscript }) {
+  const check = newCheck({ role, variant, gate, journal, manuscript, signature: store.signature, reviewId });
+  return store.createCheck(check);
 }
 
 export function describeEntry(e) {
-  const cl = e.check ? getChecklist(e.check.checklistId) : null;
+  const cl = e.check ? getChecklist(e.check.checklistId) : (e.checklistId ? getChecklist(e.checklistId) : null);
   const step = STEPS.find((s) => s.key === (e.step || (cl && stepKeyOf(cl))));
   return step ? `${step.name}${e.step === 'R' ? ` putaran ${e.round || 1}${e.code ? ` (${e.code})` : ''}` : ''}` : '';
+}
+
+export function ojsLink(store, journal, msid, role) {
+  const base = store.me?.ojsUrl;
+  const path = store.journals.find((j) => j.id === (journal?.id ?? journal))?.path;
+  if (!base || !path || !msid) return '';
+  if (role === 'Reviewer') return `${base}/${path}/reviewer/submission/${msid}`;
+  if (role === 'Penulis') return `${base}/${path}/authorDashboard/submission/${msid}`;
+  return `${base}/${path}/workflow/access/${msid}`;
 }

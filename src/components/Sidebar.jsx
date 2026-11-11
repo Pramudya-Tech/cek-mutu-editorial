@@ -12,12 +12,14 @@ const NAV = [
   { id: 'tentang', path: '/tentang', label: 'Tentang', short: 'Tentang', icon: 'info' },
 ];
 
-export function Sidebar({ active, lockedRole }) {
-  const { settings, setSettings, checks } = useStore();
+export function Sidebar({ active }) {
+  const { settings, setSettings, checks, me, logout } = useStore();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-  const role = lockedRole || settings.role;
-  const drafts = checks.filter((c) => c.status === 'draft' && c.role === role).length;
+  const role = settings.role;
+  const roles = ROLES.filter((r) => me.roles.includes(r.id));
+  const single = roles.length < 2;
+  const drafts = checks.filter((c) => c.status === 'draft' && c.mine && c.role === role).length;
 
   useEffect(() => {
     if (!open) return undefined;
@@ -33,16 +35,15 @@ export function Sidebar({ active, lockedRole }) {
       <div className="brand">
         <RoleIcon role={role} />
         <div className="brand-text role-switch" ref={ref}>
-          <button type="button" className="role-btn" onClick={() => setOpen((o) => !o)} disabled={!!lockedRole}
-            aria-haspopup="menu" aria-expanded={open} title="Ganti peran">
+          <button type="button" className="role-btn" onClick={() => setOpen((o) => !o)} disabled={single}
+            aria-haspopup="menu" aria-expanded={open} title={single ? 'Peran Anda di OJS' : 'Ganti peran'}>
             <span className="lbl">{role}</span>
-            {!lockedRole && <Icon name="updown" size={14} />}
-            {lockedRole && <Icon name="lock" size={13} />}
+            {!single && <Icon name="updown" size={14} />}
           </button>
-          {lockedRole && <div className="locknote">Dibuka dari tautan editor</div>}
+          <div className="locknote">{me.user.name}</div>
           {open && (
             <div className="role-menu" role="menu">
-              {ROLES.map((r) => (
+              {roles.map((r) => (
                 <button key={r.id} type="button" role="menuitemradio" aria-checked={r.id === role} aria-current={r.id === role}
                   onClick={() => { setSettings({ role: r.id }); setOpen(false); location.hash = '#/'; }}>
                   <span className="role-row"><RoleIcon role={r.id} size={30} /><span><b>{r.label}</b><span>{r.note}</span></span></span>
@@ -69,6 +70,9 @@ export function Sidebar({ active, lockedRole }) {
           <span className="dot"><Icon name="plus" size={14} stroke={2} /></span>
           <span className="lbl">Checklist baru</span>
         </a>
+        <button type="button" className="logout" onClick={logout} title={`Keluar dari ${me.user.username}`}>
+          <Icon name="arrowL" size={15} /><span className="lbl">Keluar</span>
+        </button>
       </div>
     </aside>
   );
